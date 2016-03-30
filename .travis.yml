@@ -1,16 +1,12 @@
 language: python
-services:
+addon:
   - mariadb
 python:
   - "2.7"
   - "3.2"
-  - "3.3"
-  - "3.4"
-  - "3.5"
 
 # command to install dependencies
 install:
-  - pip install .
   - pip install -r requirements.txt
   - ./manage/prod/loaddatabase.sh
   - python manage.py syncdb
