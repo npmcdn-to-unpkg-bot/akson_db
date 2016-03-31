@@ -40,6 +40,12 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'easy_select2',
+    'akson_db.cards.gait_reeducation_card',
+    'akson_db.cards.track_gait_training',
+    'akson_db.cards.neurorehabilitation_card',
+    'akson_db.cards.physiotherapy_card',
+    'akson_db.cards.upper_limb_therapy',
+    'akson_db.cards.massage_reflexology_card',
 ]
 
 MIDDLEWARE_CLASSES = [
