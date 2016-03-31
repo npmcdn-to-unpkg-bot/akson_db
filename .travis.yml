@@ -8,7 +8,6 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-  - yes | pip install MySQL-python
   - pip install mysqlclient
   - python manage.py syncdb
 #  - ./manage/prod/loaddatabase.sh
