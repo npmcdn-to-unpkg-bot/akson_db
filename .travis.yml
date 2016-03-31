@@ -9,6 +9,7 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install mysqlclient
+  - mysql < ./database/drop_and_create_database.sql
   - python manage.py migrate
 #  - ./manage/prod/loaddatabase.sh
 
@@ -18,4 +19,4 @@ install:
 #env:
 
 # command to run tests
-script: python manage.py check
+script: python manage.py test
