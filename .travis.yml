@@ -2,8 +2,8 @@ language: python
 addon:
   - mariadb
 python:
-  - "2.7"
-  - "3.2"
+#  - "2.7"
+  - "3.5"
 
 # command to install dependencies
 install:

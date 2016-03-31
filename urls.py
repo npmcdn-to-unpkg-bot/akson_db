@@ -5,6 +5,7 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = [
+    url(r'^', include(admin.site.urls)),
     url(r'^admin/', admin.site.urls),
    # (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
    #     'document_root': settings.MEDIA_ROOT}),
