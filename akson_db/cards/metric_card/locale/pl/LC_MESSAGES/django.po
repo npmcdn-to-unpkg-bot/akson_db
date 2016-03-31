@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-27 00:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+msgid "SFTR measures"
+msgstr "zapis systemem SFTR pomiarów kątowych"
+
+msgid "joints"
+msgstr "stawy"
+
+msgid "plane_symbol"
+msgstr "symbol płaszczyzny"
+
+msgid "movements"
+msgstr "ruchy"
+
+msgid "cervical_sftr"
+msgstr "szyjnego odcinka kręgosłupa"
+
+msgid "thoraco_lumbar_sftr"
+msgstr "piersiowo-lędźwiowego odcinka kręgosłupa"
+
+msgid "shoulder_sftr"
+msgstr "barkowy"
+
+msgid "elbow_sftr"
+msgstr "łokciowy"
+
+msgid "radial_ulnar_nearer_and_further_sftr"
+msgstr "promieniowo-łokciowy bliższy i dalszy"
+
+msgid "radial_carpal_sftr"
+msgstr "promieniowo-nadgarstkowy"
+
+msgid "carpo_metacarpal_sftr"
+msgstr "nadgarstkowo-śródręczny I (CMC)"
+
+msgid "metacarpal_finger1_sftr"
+msgstr "śródręczno-palcowy I (MCP)"
+
+msgid "metacarpal_finger2_sftr"
+msgstr "śródręczno palcowe II V"
+
+msgid "interphalangeal_sftr"
+msgstr "międzypaliczkowy I (IPP)"
+
+msgid "interphalangeal_nearer_sftr"
+msgstr "międzypaliczowe bliższe II-V (DIP)"
+
+msgid "interphalangeal_further_sftr"
+msgstr "międzypaliczowe dalsze II-V (DIP)"
+
+msgid "hip_sftr"
+msgstr "biodrowy"
+
+msgid "knee_sftr"
+msgstr "kolanowy"
+
+msgid "angle_upper_and_lower_sftr"
+msgstr "skokowy górny i dolny"
+
+msgid "muscle_strength"
+msgstr "siła mięśniowa"
+
+msgid "muscle_strengths"
+msgstr "siły mięśniowe"
+
+msgid "extension"
+msgstr "wyprost"
+
+msgid "bend"
+msgstr "zgięcie"
+
+msgid "left_slope"
+msgstr "skłon boczny w lewo"
+
+msgid "right_slope"
+msgstr "skłon boczny w prawo"
+
+msgid "left_rotation"
+msgstr "rotacja w lewo"
+
+msgid "right_rotation"
+msgstr "rotacja w prawo"
+
+msgid "abduction"
+msgstr "odwodzenie"
+
+msgid "horizontal_plane_extension"
+msgstr "wyprost w płaszczyźnie horyzontalnej"
+
+msgid "horizontal_plane_bend"
+msgstr "zgięcie w płaszczyźnie horyzontalnej"
+
+msgid "outter_rotation"
+msgstr "rotacja zewnętrzna"
+
+msgid "inner_rotation"
+msgstr "rotacja wewnętrzna"
+
+msgid "elbow_abduction"
+msgstr "odwodzenie łokciowe"
+
+msgid "inradial_abduction"
+msgstr "odwodzenie dopromieniowe"
+
+msgid "inelbow_adduction"
+msgstr "przywodzenie dołokciowe"
+
+msgid "hand_abduction"
+msgstr "odwodzenie dłoniowe"
+
+msgid "hand_adduction"
+msgstr "przywodzenie dłoniowe"
+
+msgid "guided"
+msgstr "odprowadzenie"
+
+msgid "enclose"
+msgstr "obwodzenie"
+
