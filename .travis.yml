@@ -5,12 +5,18 @@ python:
 #  - "2.7"
   - "3.5"
 
+env:
+  - DB_NAME=akson_prod
+  - DB_USER=""
+  - DB_PASS=""
+
 # command to install dependencies
 install:
   - pip install -r requirements.txt
   - pip install mysqlclient
   - mysql < ./database/drop_and_create_database.sql
   - python manage.py migrate
+  - python manage.py compilemessages
 #  - ./manage/prod/loaddatabase.sh
 
 #  - pip install -r test_requirements.txt

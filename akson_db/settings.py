@@ -13,8 +13,17 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+AKSON_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(AKSON_DIR)
+print(BASE_DIR)
 
+DEBUG = True
+
+ADMINS = (
+    ('Grzegorz Terlikowski', 'terlikowski.grzegorz@gmail.com'),
+)
+
+MANAGERS = ADMINS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -23,23 +32,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = 'c$2m5q@le+42ifs2=+)nv7xs_)5jm0m!3)mckva9n5=a1yo%x&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-#
-# TIME_ZONE = 'UTC'
-#
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en//ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*'] # TODO should be changed to proper thing
+ALLOWED_HOSTS = ['*']  # TODO should be changed to proper thing
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -47,6 +45,8 @@ ALLOWED_HOSTS = ['*'] # TODO should be changed to proper thing
 # In a Windows environment this must be set to your system time zone.
 TIME_ZONE = 'Europe/Warsaw'
 
+# Internationalization
+# https://docs.djangoproject.com/en/1.9/topics/i18n/
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'pl'
@@ -57,12 +57,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
+STATIC_ROOT = "".join([BASE_DIR, '/static'])
 STATIC_URL = '/static/'
-
 
 # Application definition
 
@@ -76,8 +74,8 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'easy_select2',
-    #'cards',
     'patient',
+    # 'gait_reeducation_card',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -91,7 +89,9 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'urls'
+LOCALE_PATHS = [AKSON_DIR + '/locale', ]
+
+ROOT_URLCONF = 'akson_db.urls'
 
 TEMPLATES = [
     {
@@ -109,23 +109,21 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi.application'
-
+WSGI_APPLICATION = 'akson_db.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'akson_prod',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.getenv('DB_NAME') or 'akson_prod',  # Or path to database file if using sqlite3.
+        'USER': os.getenv('DB_USER'),  # Not used with sqlite3.
+        'PASSWORD': os.getenv('DB_PASS'),  # Not used with sqlite3.
+        'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',  # Set to empty string for default. Not used with sqlite3.
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -144,3 +142,37 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+U_LOGFILE_NAME = os.path.join(BASE_DIR, 'logs')
+U_LOGFILE_SIZE = 10 * 1024 * 1024
+U_LOGFILE_COUNT = 10
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'logfile': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': U_LOGFILE_NAME,
+            'maxBytes': U_LOGFILE_SIZE,
+            'backupCount': U_LOGFILE_COUNT,
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['logfile'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+    }
+}

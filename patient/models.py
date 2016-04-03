@@ -27,7 +27,7 @@ class Patient(models.Model):
         (_('ABR-'), _('ABRh-')),
         (_('ABR+'), _('ABRh+')),
     )
-    blood_type = models.CharField(max_length=4, choices=BLOOD_TYPE, blank = True, null = True)
+    blood_type = models.CharField(max_length=4, choices=BLOOD_TYPE, blank=True, null=True)
     _('blood_type')
 
     birth_date = models.DateField()
@@ -40,47 +40,48 @@ class Patient(models.Model):
     _('country')
     city = models.CharField(max_length=40)
     _('city')
-    address  = models.CharField(max_length=40, blank = True, null = True)
+    address = models.CharField(max_length=40, blank=True, null=True)
     _('address')
 
     # mailing_address
-    mailing_country = models.CharField(max_length=40, blank = True, null = True)
+    mailing_country = models.CharField(max_length=40, blank=True, null=True)
     _('mailing_country')
-    mailing_city = models.CharField(max_length=40, blank = True, null = True)
+    mailing_city = models.CharField(max_length=40, blank=True, null=True)
     _('mailing_city')
-    mailing_address  = models.CharField(max_length=40, blank = True, null = True)
+    mailing_address = models.CharField(max_length=40, blank=True, null=True)
     _('mailing_address')
 
     # work
-    job = models.CharField(max_length=20, blank = True, null = True)
+    job = models.CharField(max_length=20, blank=True, null=True)
     _('job')
-    workplace = models.CharField(max_length=50, blank = True, null = True)
+    workplace = models.CharField(max_length=50, blank=True, null=True)
     _('workplace')
 
     # contact
-    cell_phone = models.CharField(max_length=30, blank = True, null = True)
+    cell_phone = models.CharField(max_length=30, blank=True, null=True)
     _('cell_phone')
-    landline_phone = models.CharField(max_length=30, blank = True, null = True)
+    landline_phone = models.CharField(max_length=30, blank=True, null=True)
     _('landline_phone')
-    email = models.EmailField(blank = True, null = True)
+    email = models.EmailField(blank=True, null=True)
     _('email')
 
     # injury info
     date_of_injury = models.DateField()
     _('date_of_injury')
-    time_of_injury = models.TimeField(blank = True, null = True)
+    time_of_injury = models.TimeField(blank=True, null=True)
     _('time_of_injury')
-    date_of_operation = models.DateField(blank = True, null = True)
+    date_of_operation = models.DateField(blank=True, null=True)
     _('date_of_operation')
-    time_of_operation = models.TimeField(blank = True, null = True)
+    time_of_operation = models.TimeField(blank=True, null=True)
     _('time_of_operation')
-    therapy_program = models.TextField(blank = True, null = True)
+    therapy_program = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return "{0} {1}".format(self.first_name, self.last_name)
 
     class Meta:
         ordering = ('last_name', 'first_name')
+
 
 _('patient')
 _('patients')
