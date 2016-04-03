@@ -6,9 +6,7 @@ python:
   - "3.5"
 
 env:
-  - DB_NAME=akson_prod
-  - DB_USER=""
-  - DB_PASS=""
+  - DB_NAME=akson_prod DB_USER="" DB_PASS=""
 
 # command to install dependencies
 install:
