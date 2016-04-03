@@ -13,6 +13,7 @@ install:
   - pip install -r requirements.txt
   - pip install mysqlclient
   - mysql < ./database/drop_and_create_database.sql
+  - python manage.py makemigrations
   - python manage.py migrate
   - python manage.py compilemessages
 #  - ./manage/prod/loaddatabase.sh
