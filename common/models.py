@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 class ShortFloatField(models.FloatField):
@@ -17,9 +18,6 @@ class AdditionalNotesField(models.TextField):
 
 class DescriptionField(models.TextField):
     pass
-
-
-from django.core.exceptions import ValidationError
 
 
 def validate_pesel_length(value):

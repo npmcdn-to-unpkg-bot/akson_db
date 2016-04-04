@@ -10,8 +10,10 @@ def app_name(filename):
 
 def common_app_config(filename):
     print(filename)
+
     def wrap(f):
         print(filename)
+
         class CommonAppConfig(AppConfig):
             name = app_name(filename)
             verbose_name = verbose_name_app(name)
@@ -19,6 +21,7 @@ def common_app_config(filename):
         return CommonAppConfig
 
     return wrap
+
 
 def default_app_config_string(filename):
     return '.'.join([app_name(filename), 'apps', 'AppConfig'])

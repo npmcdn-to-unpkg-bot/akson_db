@@ -31,10 +31,6 @@ MANAGERS = ADMINS
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'c$2m5q@le+42ifs2=+)nv7xs_)5jm0m!3)mckva9n5=a1yo%x&'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-
-ALLOWED_HOSTS = []
-
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en//ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['*']  # TODO should be changed to proper thing
