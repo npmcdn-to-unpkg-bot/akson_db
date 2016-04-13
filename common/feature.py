@@ -1,11 +1,13 @@
 from common.models import *
+from common.localization import _, verbose_names
 from common.admin import AksonBaseAdmin
 
 
-# TODO need custom field
+@verbose_names
 class Feature(models.Model):
     name = models.CharField(max_length=200)
-    description = DescriptionField(blank = True, null = True)
+    description = DescriptionField(blank=True, null=True)
+    _('description')
 
     def short_description(self):
         max_length = 60

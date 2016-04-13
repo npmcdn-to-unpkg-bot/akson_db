@@ -1,11 +1,15 @@
 from django.contrib.admin.models import LogEntry
-from common.admin import AksonBaseAdmin, admin
+from common.admin import AksonCardAdmin, admin
 from common.feature import FeatureCardAdmin
 from common.localization import _
 from person.models import Person, Group
 
 
-class PersonAdmin(AksonBaseAdmin):
+def get_m2m(name):
+    return name
+
+
+class PersonAdmin(AksonCardAdmin):
     fieldsets = (
         (_('Basic info'),
             {'fields': (
@@ -17,9 +21,11 @@ class PersonAdmin(AksonBaseAdmin):
                 )}),
         )
 
-    def get_groups(self, obj):
-        return ", ".join([p.name for p in obj.groups.all()])
-    get_groups.short_description = _("groups")
+    get_groups = get_m2m
+
+    # def get_groups(self, obj):
+    #     return ", ".join([p.name for p in obj.groups.all()])
+    # get_groups.short_description = _("groups")
 
     list_display = ('last_name', 'first_name', 'get_groups')
 
