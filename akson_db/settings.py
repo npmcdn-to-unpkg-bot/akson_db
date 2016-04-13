@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'easy_select2',
     'patient',
     'person',
+    'neurorehabilitation_card',
     # 'gait_reeducation_card',
 ]
 
