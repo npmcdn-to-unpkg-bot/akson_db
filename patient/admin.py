@@ -1,23 +1,59 @@
+from django.db import models
+from copy import deepcopy
 from common.admin import AksonBaseAdmin, admin
-from common.localization import txt
+from common.localization import txt, verbose_names_inline
 from patient.models import Patient
+from neurorehabilitation_card.models import NeurorehabilitationCard
+from neurorehabilitation_card.admin import NeurorehabilitationCardCardAdmin
+
+
+class PatientInlineBase(object):
+    extra = 0
+    can_delete = False
+    editable_fields = []
+    exclude = []
+
+    def get_queryset(self, request):
+        my_model = super(PatientInlineBase, self).get_queryset(request)
+        my_model = my_model.prefetch_related(*[field.name for field in self.opts.local_many_to_many])
+        my_model = my_model.prefetch_related(*[field.name for field in self.opts.local_fields if isinstance(field, (models.ForeignKey, models.ManyToManyField))])
+        return my_model
+
+    def get_readonly_fields(self, request, obj=None):
+            return list(set(
+                [field.name for field in self.opts.local_fields] +
+                [field.name for field in self.opts.local_many_to_many]
+            ))
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+class PatientInline(PatientInlineBase, admin.TabularInline):
+    pass
+
+
+@verbose_names_inline
+class NeurorehabilitationCardInline(PatientInline):
+    model = NeurorehabilitationCard
+    fieldsets = deepcopy(NeurorehabilitationCardCardAdmin.fieldsets)
 
 
 class PatientCardAdmin(AksonBaseAdmin):
     model = Patient
-    # inlines = [
-    #     TimeSpreadInline,
-    #     GaitReeducationCardInline,
-    #     TrackGaitTrainingInline,
-    #     NeurorehabilitationCardInline,
-    #     PhysiotherapyCardInline,
-    #     MetricCardInline,
-    #     UpperLimbStudyInline,
-    #     UpperLimbTherapyInline,
-    #     MassageReflexologyCardInline,
-    #     TreatmentRecordInline,
-    #            # AsiaCardInline,
-    # ]
+    inlines = [
+        #     TimeSpreadInline,
+        #     GaitReeducationCardInline,
+        #     TrackGaitTrainingInline,
+        NeurorehabilitationCardInline,
+        #     PhysiotherapyCardInline,
+        #     MetricCardInline,
+        #     UpperLimbStudyInline,
+        #     UpperLimbTherapyInline,
+        #     MassageReflexologyCardInline,
+        #     TreatmentRecordInline,
+        #            # AsiaCardInline,
+    ]
     fieldsets = (
         (txt('Private'),
          {'fields': (
