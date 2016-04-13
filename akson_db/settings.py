@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'easy_select2',
     'patient',
+    'person',
     # 'gait_reeducation_card',
 ]
 
