@@ -19,7 +19,7 @@ class NeurorehabilitationCardCardAdmin(AksonCardAdmin):
          {'fields': (('time', 'frequency'),
                      )}),
         (txt('Additionals'),
-         {'fields': ('additional_notes'),
+         {'fields': ('additional_notes', ),
           }),
     )
     list_display = ('patient', 'date', 'excercise_signature', 'load', 'repetitions', 'sets', 'time', 'frequency')
