@@ -1,0 +1,5 @@
+[run]
+source = akson_db,common,patient
+
+[report]
+omit = */migrations/*
