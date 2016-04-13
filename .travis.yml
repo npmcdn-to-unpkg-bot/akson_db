@@ -19,12 +19,9 @@ install:
   - python manage.py compilemessages
 #  - ./manage/prod/loaddatabase.sh
 
-#  - pip install -r test_requirements.txt
-
-# environment for testing
-#env:
-
 # command to run tests
 script:
   - python manage.py check
   - python manage.py test --settings=akson_db.test_settings
+  - coverage run manage.py test --settings=akson_db.test_settings
+after_success: coveralls
