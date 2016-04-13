@@ -16,7 +16,7 @@ class NeurorehabilitationCard(models.Model):
     date = models.DateField(default=datetime.now)
 
     excercise_signature = models.ForeignKey('ExcerciseSignature')
-    load = ShortFloatField(validators=[MinValueValidator(-40000), MaxValueValidator(40000)]) # [g]
+    load = ShortFloatField(validators=[MinValueValidator(-40000), MaxValueValidator(40000)])  # [g]
     repetitions = ShortIntegerField(validators=[MinValueValidator(1), MaxValueValidator(99)])
     sets = ShortIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
 
@@ -27,9 +27,9 @@ class NeurorehabilitationCard(models.Model):
     # TODO try datetime.widget = forms.SplitDateTimeWidget(time_format=('%H:%M'))
     time = models.TimeField(blank=True, null=True)
     time.widget = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
-    frequency = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(40)], blank=True, null=True) # [Hz]
+    frequency = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(40)], blank=True, null=True)  # [Hz]
 
-    additional_notes = AdditionalNotesField(blank = True, null = True)
+    additional_notes = AdditionalNotesField(blank=True, null=True)
 
     class Meta:
         ordering = ('patient', 'date',)

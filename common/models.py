@@ -20,8 +20,6 @@ class DescriptionField(models.TextField):
     pass
 
 
-
-
 def validate_pesel_length(value):
     if len(value) != 11:
         raise ValidationError('PESEL musi zawierać 11 cyfr')

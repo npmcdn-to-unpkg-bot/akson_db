@@ -17,8 +17,8 @@ def adminviews_test(self):
         return
     for id_ in dir(models_mod.models):
         model = getattr(models_mod.models, id_)
-        # Get ModelAdmin for this Model
         if isinstance(model, ModelBase) and model._meta.app_label == pkg and model in admin.site._registry:
+            # noinspection PyProtectedMember
             def check_url(sufix):
                 url = reverse("admin:%s_%s_%s" % (model._meta.app_label, model._meta.model_name, sufix))
                 response = self.client.get(url, follow=True)
