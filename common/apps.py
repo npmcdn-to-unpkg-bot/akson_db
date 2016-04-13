@@ -4,13 +4,10 @@ from django.apps import AppConfig
 
 
 def app_name(filename):
-    print(filename)
     return os.path.basename(os.path.normpath(os.path.dirname(os.path.realpath(filename))))
 
 
 def common_app_config(filename):
-    print(filename)
-
     def wrap(f):
         print(filename)
 
