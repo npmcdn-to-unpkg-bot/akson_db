@@ -10,7 +10,7 @@ class Feature(models.Model):
     txt('description')
 
     def short_description(self):
-        max_length = 60
+        max_length = 255
         if len(self.description) > max_length:
             return self.description[:max_length] + '...'
         return self.description

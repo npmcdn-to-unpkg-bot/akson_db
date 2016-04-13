@@ -21,4 +21,4 @@ def common_app_config(filename):
 
 
 def default_app_config_string(filename):
-    return '.'.join([app_name(filename), 'apps', 'AppConfig'])
+    return '.'.join([app_name(filename), 'AppConfig'])
