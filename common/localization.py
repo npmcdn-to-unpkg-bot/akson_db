@@ -1,6 +1,6 @@
 import re
 import inspect
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as txt
 from django.utils.translation import gettext_lazy
 from django.utils import six  # Python 3 compatibility
 from django.utils.functional import lazy
@@ -11,16 +11,17 @@ def camelcase_to_underscore(string):
     return re.sub('(((?<=[a-z])[A-Z0-9])|([A-Z0-9](?![A-Z0-9]|$)))', '_\\1', string).lower().strip('_')
 
 
+# noinspection PyProtectedMember
 def verbose_names(model):
     app_name = camelcase_to_underscore(model.__module__.split('.')[0])
     text = camelcase_to_underscore(model.__name__)
     for field in model._meta.fields:
-        setattr(field, 'verbose_name', _(field.name))
+        setattr(field, 'verbose_name', txt(field.name))
     for field in model._meta.many_to_many:
-        setattr(field, 'verbose_name', _(field.name))
-    model._meta.app_label = StringWithTitle(app_name, _(app_name))
-    model._meta.verbose_name = _(text)
-    model._meta.verbose_name_plural = _(text + 's')
+        setattr(field, 'verbose_name', txt(field.name))
+    model._meta.app_label = StringWithTitle(app_name, txt(app_name))
+    model._meta.verbose_name = txt(text)
+    model._meta.verbose_name_plural = txt(text + 's')
     return model
 
 

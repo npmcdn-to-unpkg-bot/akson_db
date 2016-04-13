@@ -1,5 +1,5 @@
 from common.models import *
-from common.localization import _, verbose_names
+from common.localization import txt, verbose_names
 
 
 @verbose_names
@@ -8,19 +8,19 @@ class Patient(models.Model):
     first_name = models.CharField(max_length=80)
     last_name = models.CharField(max_length=80)
     GENDER = (
-        (_('M'), _('male')),
-        (_('F'), _('female'))
+        (txt('M'), txt('male')),
+        (txt('F'), txt('female'))
     )
     gender = models.CharField(max_length=1, choices=GENDER)
     BLOOD_TYPE = (
-        (_('0Rh-'), _('0Rh-')),
-        (_('0Rh+'), _('0Rh+')),
-        (_('ARh-'), _('ARh-')),
-        (_('ARh+'), _('ARh+')),
-        (_('BRh-'), _('BRh-')),
-        (_('BRh+'), _('BRh+')),
-        (_('ABR-'), _('ABRh-')),
-        (_('ABR+'), _('ABRh+')),
+        (txt('0Rh-'), txt('0Rh-')),
+        (txt('0Rh+'), txt('0Rh+')),
+        (txt('ARh-'), txt('ARh-')),
+        (txt('ARh+'), txt('ARh+')),
+        (txt('BRh-'), txt('BRh-')),
+        (txt('BRh+'), txt('BRh+')),
+        (txt('ABR-'), txt('ABRh-')),
+        (txt('ABR+'), txt('ABRh+')),
     )
     blood_type = models.CharField(max_length=4, choices=BLOOD_TYPE, blank=True, null=True)
     birth_date = models.DateField()

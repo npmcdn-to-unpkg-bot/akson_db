@@ -1,5 +1,5 @@
 from common.models import *
-from common.localization import _, verbose_names
+from common.localization import txt, verbose_names
 from common.admin import AksonBaseAdmin
 
 
@@ -7,7 +7,7 @@ from common.admin import AksonBaseAdmin
 class Feature(models.Model):
     name = models.CharField(max_length=200)
     description = DescriptionField(blank=True, null=True)
-    _('description')
+    txt('description')
 
     def short_description(self):
         max_length = 60
