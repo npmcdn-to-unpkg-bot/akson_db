@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'patient',
     'neurorehabilitation_card',
     'gait_reeducation_card',
+    'massage_reflexology_card',
 ]
 
 MIDDLEWARE_CLASSES = [
