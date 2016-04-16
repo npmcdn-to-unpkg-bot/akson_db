@@ -11,6 +11,8 @@ engines:
     enabled: true
   pep8:
     enabled: true
+    config:
+      max-line-length: 120
 ratings:
   paths:
   - "**.py"
