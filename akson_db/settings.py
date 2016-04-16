@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'track_gait_training',
     'upper_limb_study',
     'upper_limb_therapy',
+    'metric_card',
 ]
 
 MIDDLEWARE_CLASSES = [
