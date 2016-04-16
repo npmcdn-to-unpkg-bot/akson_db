@@ -14,21 +14,21 @@ class TimeSpread(models.Model):
 
     # time spreads
     begin = models.DateField(default=datetime.now)
-    end = models.DateField(blank = True, null = True)
+    end = models.DateField(blank=True, null=True)
 
     # coefficients
-    asia = models.ManyToManyField('ASIA', blank = True)
-    icd10 = DescriptionField(blank = True, null = True)
-    ashworth = models.ManyToManyField('Ashworth', blank = True)
+    asia = models.ManyToManyField('ASIA', blank=True)
+    icd10 = DescriptionField(blank=True, null=True)
+    ashworth = models.ManyToManyField('Ashworth', blank=True)
 
     # diagnosis
-    diagnosis = DescriptionField(blank = True, null = True)
-    contraindicators = DescriptionField(blank = True, null = True)
+    diagnosis = DescriptionField(blank=True, null=True)
+    contraindicators = DescriptionField(blank=True, null=True)
     levels_of_injury = models.ManyToManyField('LevelOfInjury')
     injury_unit = models.TextField()
 
     # treatment
-    date_of_agreement = models.DateField(blank = True, null = True)
+    date_of_agreement = models.DateField(blank=True, null=True)
     rehabilitation_at_home = models.BooleanField(default=False)
 
     def __str__(self):

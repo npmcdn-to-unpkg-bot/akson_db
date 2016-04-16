@@ -7,23 +7,24 @@ from time_spread.models import *
 class TimeSpreadCardAdmin(AksonCardAdmin):
     fieldsets = (
         (txt('Time spreads'),
-            {'fields': (('leading_doctors', 'patient',),
-                        ('begin', 'end',),
-            )}),
+         {'fields': (('leading_doctors', 'patient',),
+                     ('begin', 'end',),
+                     )}),
         (txt('Coefficients'),
-            {'fields': (('asia', 'icd10', 'ashworth'),
-            )}),
+         {'fields': (('asia', 'icd10', 'ashworth'),
+                     )}),
         (txt('Diagnosis'),
-            {'fields': (('diagnosis',),
-                        ('contraindicators',),
-                        ('levels_of_injury',),
-                        ('injury_unit',),
-            )}),
+         {'fields': (('diagnosis',),
+                     ('contraindicators',),
+                     ('levels_of_injury',),
+                     ('injury_unit',),
+                     )}),
         (txt('Treatment'),
-            {'fields': (('date_of_agreement', 'rehabilitation_at_home'),
-            )})
-        )
+         {'fields': (('date_of_agreement', 'rehabilitation_at_home'),
+                     )})
+    )
     list_display = ('patient', 'begin', 'end')
+
 
 admin.site.register(TimeSpread, TimeSpreadCardAdmin)
 admin.site.register(ASIA, FeatureCardAdmin)

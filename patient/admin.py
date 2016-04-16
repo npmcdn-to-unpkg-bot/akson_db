@@ -16,14 +16,15 @@ class PatientInlineBase(object):
     def get_queryset(self, request):
         my_model = super(PatientInlineBase, self).get_queryset(request)
         my_model = my_model.prefetch_related(*[field.name for field in self.opts.local_many_to_many])
-        my_model = my_model.prefetch_related(*[field.name for field in self.opts.local_fields if isinstance(field, (models.ForeignKey, models.ManyToManyField))])
+        my_model = my_model.prefetch_related(*[field.name for field in self.opts.local_fields if
+                                               isinstance(field, (models.ForeignKey, models.ManyToManyField))])
         return my_model
 
     def get_readonly_fields(self, request, obj=None):
-            return list(set(
-                [field.name for field in self.opts.local_fields] +
-                [field.name for field in self.opts.local_many_to_many]
-            ))
+        return list(set(
+            [field.name for field in self.opts.local_fields] +
+            [field.name for field in self.opts.local_many_to_many]
+        ))
 
     def has_add_permission(self, request, obj=None):
         return False

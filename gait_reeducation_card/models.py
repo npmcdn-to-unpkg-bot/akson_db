@@ -17,11 +17,11 @@ class GaitReeducationCard(models.Model):
     tool = models.ManyToManyField('ReeducationTool', blank=True)
     left_orthosis = models.ManyToManyField('OrthosisType', related_name="LeftOrthosis+", blank=True)
     right_orthosis = models.ManyToManyField('OrthosisType', related_name="RightOrthosis+", blank=True)
-    distance = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(1000)]) # [m]
-    gait_time = models.TimeField() # TODO try datetime.widget = forms.SplitDateTimeWidget(time_format=('%H:%M'))
+    distance = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(1000)])  # [m]
+    gait_time = models.TimeField()  # TODO try datetime.widget = forms.SplitDateTimeWidget(time_format=('%H:%M'))
     gait_time.widget = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
-    vertical_load = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(20000)]) # [g]
-    horizontal_load = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(30000)]) # [g]
+    vertical_load = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(20000)])  # [g]
+    horizontal_load = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(30000)])  # [g]
 
     accented_traits = models.ManyToManyField('AccentedTrait')
     gait_coefficients = models.ManyToManyField('GaitCoefficient')

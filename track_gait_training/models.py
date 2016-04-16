@@ -11,7 +11,7 @@ from datetime import datetime
 
 @verbose_names
 class TrackGaitTraining(models.Model):
-    patient= models.ForeignKey(Patient)
+    patient = models.ForeignKey(Patient)
     leading_people = models.ManyToManyField(User)
     date = models.DateField(default=datetime.now)
 
@@ -20,17 +20,19 @@ class TrackGaitTraining(models.Model):
     blood_pressure_rr_dia = ShortIntegerField(validators=[MinValueValidator(20), MaxValueValidator(150)])
 
     restoration_time = models.TimeField()
-    gait_speed = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(5)]) # [m/s]
-    gait_time = models.TimeField() # TODO try datetime.widget = forms.SplitDateTimeWidget(time_format=('%H:%M'))
+    gait_speed = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])  # [m/s]
+    gait_time = models.TimeField()  # TODO try datetime.widget = forms.SplitDateTimeWidget(time_format=('%H:%M'))
     gait_time.widget = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
 
     support_type = models.ManyToManyField('SupportType')
-    left_orthosis = models.ManyToManyField('gait_reeducation_card.OrthosisType', related_name="LeftOrthosis", blank=True)
-    right_orthosis = models.ManyToManyField('gait_reeducation_card.OrthosisType', related_name="RightOrthosis", blank=True)
+    left_orthosis = models.ManyToManyField('gait_reeducation_card.OrthosisType', related_name="LeftOrthosis",
+                                           blank=True)
+    right_orthosis = models.ManyToManyField('gait_reeducation_card.OrthosisType', related_name="RightOrthosis",
+                                            blank=True)
 
     fixation_location = models.ManyToManyField('FixationLocation')
-    load = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(30000)]) # [g]
-    additional_notes = AdditionalNotesField(blank = True, null = True)
+    load = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(30000)])  # [g]
+    additional_notes = AdditionalNotesField(blank=True, null=True)
 
     class Meta:
         ordering = ('patient', 'date',)

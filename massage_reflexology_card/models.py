@@ -16,7 +16,7 @@ class MassageReflexologyCard(models.Model):
     massage_reflexology_treatment = models.ManyToManyField('MassageReflexologyTreatment')
     massage_reflexology_area = models.ManyToManyField('MassageReflexologyArea')
 
-    additional_notes = AdditionalNotesField(blank = True, null = True)
+    additional_notes = AdditionalNotesField(blank=True, null=True)
 
     def __str__(self):
         return "{0} {1}".format(self.patient.first_name, self.patient.last_name, self.date)

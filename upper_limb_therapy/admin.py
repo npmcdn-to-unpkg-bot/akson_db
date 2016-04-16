@@ -7,17 +7,18 @@ from upper_limb_therapy.models import *
 class UpperLimbTherapyCardAdmin(AksonCardAdmin):
     fieldsets = (
         (txt('General'),
-            {'fields': (
-                ('therapist', 'patient', 'date',),
-            )}),
+         {'fields': (
+             ('therapist', 'patient', 'date',),
+         )}),
         (txt('Therapy info'),
-            {'fields': (('therapy_detailed_target', 'left_area', 'right_area', 'used_methods_techniques'),
-            )}),
+         {'fields': (('therapy_detailed_target', 'left_area', 'right_area', 'used_methods_techniques'),
+                     )}),
         (txt('Additionals'),
-            {'fields': (('additional_notes'),
-            )}),
-            )
+         {'fields': ('additional_notes',
+                     )}),
+    )
     list_display = ('patient', 'date',)
+
 
 admin.site.register(UpperLimbTherapy, UpperLimbTherapyCardAdmin)
 admin.site.register(TherapyDetailedTarget, FeatureCardAdmin)
