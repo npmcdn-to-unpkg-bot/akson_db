@@ -72,7 +72,7 @@ INSTALLED_APPS = [
     'easy_select2',
     'patient',
     'neurorehabilitation_card',
-    # 'gait_reeducation_card',
+    'gait_reeducation_card',
 ]
 
 MIDDLEWARE_CLASSES = [
