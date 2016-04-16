@@ -9,14 +9,10 @@ def app_name(filename):
 
 def common_app_config(filename):
     def wrap(f):
-        print(filename)
-
         class CommonAppConfig(AppConfig):
             name = app_name(filename)
             verbose_name = verbose_name_app(name)
-
         return CommonAppConfig
-
     return wrap
 
 

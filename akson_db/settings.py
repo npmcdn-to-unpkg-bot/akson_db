@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 AKSON_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(AKSON_DIR)
-print(BASE_DIR)
 
 DEBUG = True
 
