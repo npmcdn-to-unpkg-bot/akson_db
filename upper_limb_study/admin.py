@@ -5,6 +5,8 @@ from upper_limb_study.models import *
 
 
 class UpperLimbStudyCardAdmin(AksonCardAdmin):
+    add_form_template = 'upper_limb_study.html'
+
     fieldsets = (
         (txt('General'),
          {'fields': (('patient', 'examiners', 'date'),

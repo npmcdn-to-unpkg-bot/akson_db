@@ -472,9 +472,6 @@ msgstr "osoby badające"
 msgid "height"
 msgstr "wzrost"
 
-msgid "weight"
-msgstr "waga"
-
 msgid "metric_card"
 msgstr "karta metryczna"
 
@@ -729,3 +726,117 @@ msgstr "lokalizacje fiksacji"
 
 msgid "therapy_program"
 msgstr "program terapii"
+
+msgid "upper_limb_study"
+msgstr "karta badania kończyny górnej"
+
+msgid "upper_limb_studys"
+msgstr "karty badań kończyny górnej"
+
+msgid "surface_sense"
+msgstr "czucie powierzchniowe"
+
+msgid "surface_senses"
+msgstr "czucia powierzchniowe"
+
+msgid "feeling_limbs_pose"
+msgstr "czucie ułożenia kończyny"
+
+msgid "feeling_limbs_poses"
+msgstr "czucia ułożenia kończyny"
+
+msgid "feeling_vibration"
+msgstr "czucie wibracji"
+
+msgid "feeling_vibrations"
+msgstr "czucia wibracji"
+
+msgid "feeling_pain"
+msgstr "czucie bólu"
+
+msgid "feeling_pains"
+msgstr "czucia bólu"
+
+msgid "feeling_temperature"
+msgstr "czucie temperatury"
+
+msgid "feeling_temperatures"
+msgstr "czucia temperatury"
+
+msgid "test_reflexes"
+msgstr "badanie odruchów"
+
+msgid "test_reflexess"
+msgstr "badania odruchów"
+
+msgid "flexor_arm_side"
+msgstr "ramię str. zginaczy"
+
+msgid "rectifier_arm_side"
+msgstr "ramię str. prostowników"
+
+msgid "flexor_forearm_side"
+msgstr "przedramię str. zginaczy"
+
+msgid "rectifier_forearm_side"
+msgstr "przedramię str. prostowników"
+
+msgid "palmar_hand_side"
+msgstr "ręka str. dłoniowa"
+
+msgid "dorsal_hand_side"
+msgstr "ręka str. grzbietowa"
+
+msgid "thumb"
+msgstr "kciuk"
+
+msgid "index_finger"
+msgstr "wskazujący"
+
+msgid "finger_3"
+msgstr "palec III"
+
+msgid "ring_finger"
+msgstr "serdeczny"
+
+msgid "small_finger"
+msgstr "mały"
+
+msgid "arm"
+msgstr "ramię"
+
+msgid "forearm"
+msgstr "przedramię"
+
+msgid "hand"
+msgstr "ręka"
+
+msgid "feeling_cold"
+msgstr "czucie zimna"
+
+msgid "feeling_hot"
+msgstr "czucie ciepła"
+
+msgid "feeling_temperature_change"
+msgstr "czucie zmiany temperatury"
+
+msgid "radial"
+msgstr "promieniowy"
+
+msgid "cubital"
+msgstr "łokciowy"
+
+msgid "bicephalous"
+msgstr "dwugłowy"
+
+msgid "triceps"
+msgstr "trójgłowy"
+
+msgid "grip_study"
+msgstr "badanie chwytu"
+
+msgid "cylinders_diameter"
+msgstr "średnica cylindra"
+
+msgid "weight"
+msgstr "waga"

@@ -1,0 +1,38 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static upper_limb_study_filters %}
+
+{% block field_sets %}
+{% for fieldset in adminform %}
+    {% if "surface_sense" in fieldset.name or "feeling" in fieldset.name or "grip" in fieldset.name or "test_reflexes" in fieldset.name %}
+    <fieldset class="module aligned {{ fieldset.classes }}">
+        <h2>{% trans fieldset.name|safe|capfirst %}</h2>
+    <table>
+            <thead>
+                <tr>
+                    <th>{% trans fieldset.name|capfirst %}</th>
+                    {% with 'left right' as sides %}
+                        {% for side in sides.split %}
+                        <th>{% trans side|capfirst %}</th>
+                        {% endfor %}
+                    {% endwith %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for line in fieldset %}
+                <tr>
+                    <td>
+                        {{ line.fields.0|get_left_right_measure|capfirst }}
+                    </td>
+                    {% for field in line %}
+                        <td>{{ field.field }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </fieldset>
+    {% else %}
+        {% include "admin/includes/fieldset.html" %}
+    {% endif %}
+{% endfor %}
+{% endblock %}
