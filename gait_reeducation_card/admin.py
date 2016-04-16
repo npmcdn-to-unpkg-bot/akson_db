@@ -5,7 +5,6 @@ from gait_reeducation_card.models import *
 
 
 class GaitReeducationCardCardAdmin(AksonCardAdmin):
-    # noinspection PyRedundantParentheses
     fieldsets = (
         (txt('General'),
          {'fields': (
