@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'massage_reflexology_card',
     'physiotherapy_card',
     'time_spread',
+    'track_gait_training',
 ]
 
 MIDDLEWARE_CLASSES = [
