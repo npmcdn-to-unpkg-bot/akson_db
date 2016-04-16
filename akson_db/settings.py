@@ -77,6 +77,8 @@ INSTALLED_APPS = [
     'physiotherapy_card',
     'time_spread',
     'track_gait_training',
+    'upper_limb_study',
+    'upper_limb_therapy',
 ]
 
 MIDDLEWARE_CLASSES = [
