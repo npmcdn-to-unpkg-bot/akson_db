@@ -98,7 +98,7 @@ msgstr "prędkość chodu"
 
 #: admin.py:12
 msgid "Time spreads"
-msgstr "Okres usprawniania"
+msgstr "Przebiegi neurorehabilitacji"
 
 #: admin.py:16
 msgid "Coefficients"
@@ -161,11 +161,11 @@ msgstr "rehabilitacja w domu"
 
 #: models.py:50
 msgid "time_spread"
-msgstr "Okres usprawniania"
+msgstr "przebieg neurorehabilitacji"
 
 #: models.py:51
 msgid "time_spreads"
-msgstr "Okresy usprawnień"
+msgstr "przebiegi neurorehabilitacji"
 
 #: models.py:56
 msgid "asias"

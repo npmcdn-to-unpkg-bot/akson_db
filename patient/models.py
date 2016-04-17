@@ -50,7 +50,7 @@ class Patient(models.Model):
     time_of_injury = models.TimeField(blank=True, null=True)
     date_of_operation = models.DateField(blank=True, null=True)
     time_of_operation = models.TimeField(blank=True, null=True)
-    therapy_program = models.TextField(blank=True, null=True)
+    additional_notes = AdditionalNotesField(blank=True, null=True)
 
     def __str__(self):
         return "{0} {1}".format(self.first_name, self.last_name)
