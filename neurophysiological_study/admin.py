@@ -7,7 +7,7 @@ from neurophysiological_study.models import *
 class NeurophysiologicalStudyAdmin(AksonCardAdmin):
     fieldsets = (
         (txt('General'),
-         {'fields': (('patient', 'examiners', 'date', 'mass'),
+         {'fields': (('patient', 'examiners', 'date'),
                      )}),
         (txt('Environment'),
          {'fields': (('mass', 'muscle'),

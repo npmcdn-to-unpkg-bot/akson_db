@@ -17,8 +17,8 @@ class NeurorehabilitationCard(models.Model):
 
     excercise_signature = models.ForeignKey('ExcerciseSignature')
     load = ShortFloatField(validators=[MinValueValidator(-40000), MaxValueValidator(40000)])  # [g]
-    repetitions = ShortIntegerField(validators=[MinValueValidator(1), MaxValueValidator(99)])
-    sets = ShortIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    repetitions = ShortIntegerField(validators=[MinValueValidator(1), MaxValueValidator(999)])
+    sets = ShortIntegerField(validators=[MinValueValidator(1), MaxValueValidator(100)])
 
     starting_position = models.ForeignKey('StartingPosition')
     nature_of_load = models.ManyToManyField('NatureOfLoad', blank=True)

@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'metric_card',
     'treatment_record',
     'neurophysiological_study',
+    'dynamometry_card',
 ]
 
 MIDDLEWARE_CLASSES = [
