@@ -164,7 +164,16 @@ class PatientCardAdmin(AksonBaseAdmin):
                      )})
     )
 
-    list_display = ('last_name', 'first_name', 'birth_date', 'date_of_injury')
+    # TODO ogarnac, bo duzo sqlowych zapytan robi
+    def levels_of_injury(self, obj):
+        timespreads = obj.timespread_set.order_by('-begin')
+        if len(timespreads) > 0:
+            return ', '.join([injury.name for injury in timespreads[0].levels_of_injury.all()])
+        else:
+            return txt('None')
+    levels_of_injury.short_description = txt('levels_of_injury')
+
+    list_display = ('last_name', 'first_name', 'birth_date', 'date_of_injury', 'levels_of_injury')
     search_fields = ['last_name', 'first_name']
 
     def has_delete_permission(self, request, obj=None):
