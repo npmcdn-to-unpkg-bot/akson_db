@@ -35,4 +35,4 @@ class NeurophysiologicalStudy(models.Model):
         ordering = ('patient', 'date',)
 
     def __str__(self):
-        return "{0} - {1} - {2}".format(self.mass, self.WNM)
+        return "{0} - {1}".format(self.mass, self.WNM)
