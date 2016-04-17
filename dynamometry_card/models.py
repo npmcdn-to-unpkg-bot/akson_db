@@ -15,22 +15,22 @@ class DynamometryCard(models.Model):
     muscle = models.ForeignKey(to='neurophysiological_study.Muscle')
     duration = models.DurationField()
 
-    max_dynamometer = ShortFloatField()
-    max_relative_dynamometer = ShortFloatField()
+    max = ShortFloatField(blank=True, null=True)
+    max_relative = ShortFloatField(blank=True, null=True)
 
-    average_dynamometer = ShortFloatField()
-    average_relative_dynamometer = ShortFloatField()
+    average = ShortFloatField(blank=True, null=True)
+    average_relative = ShortFloatField(blank=True, null=True)
 
-    dynamometer_surface_area = ShortFloatField()
-    dynamometer_relative_surface_area = ShortFloatField()
+    surface_area = ShortFloatField(blank=True, null=True)
+    relative_surface_area = ShortFloatField(blank=True, null=True)
 
-    dynamometer_standard_deviation = ShortFloatField()
+    standard_deviation = ShortFloatField(blank=True, null=True)
 
-    dynamometer_to_max = ShortFloatField()
-    dynamometer_relative_to_max = ShortFloatField()
+    to_max = ShortFloatField(blank=True, null=True)
+    relative_to_max = ShortFloatField(blank=True, null=True)
 
-    dynamometer_to_zero = ShortFloatField()
-    dynamometer_relative_to_zero = ShortFloatField()
+    to_zero = ShortFloatField(blank=True, null=True)
+    relative_to_zero = ShortFloatField(blank=True, null=True)
 
     additional_notes = AdditionalNotesField(blank=True, null=True)
 

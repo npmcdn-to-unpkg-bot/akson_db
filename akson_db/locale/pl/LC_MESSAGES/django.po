@@ -954,3 +954,90 @@ msgstr "odprowadzenie"
 
 msgid "enclose"
 msgstr "obwodzenie"
+
+msgid "dynamometry_card"
+msgstr "karta dynamometryczna"
+
+msgid "dynamometry_cards"
+msgstr "karty dynamometryczne"
+
+msgid "muscles"
+msgstr "mięśnie"
+
+msgid "muscle"
+msgstr "mięsień"
+
+msgid "duration"
+msgstr "czas trwania"
+
+msgid "max"
+msgstr "max"
+
+msgid "max_relative"
+msgstr "max względny"
+
+msgid "average"
+msgstr "średnia"
+
+msgid "average_relative"
+msgstr "średnia względna"
+
+msgid "surface_area"
+msgstr "pole powierzchni"
+
+msgid "relative_surface_area"
+msgstr "pole powierzchni względne"
+
+msgid "standard_deviation"
+msgstr "odchylenie standardowe"
+
+msgid "to_max"
+msgstr "do maxa"
+
+msgid "relative_to_max"
+msgstr "do maxa względnie"
+
+msgid "to_zero"
+msgstr "do zera"
+
+msgid "relative_to_zero"
+msgstr "do zera względnie"
+
+msgid "mass"
+msgstr "ciężar"
+
+msgid "MVIC"
+msgstr "MVIC"
+
+msgid "relative_MVIC"
+msgstr "MVIC względne"
+
+msgid "max_EMG"
+msgstr "EMG max"
+
+msgid "max_relative_EMG"
+msgstr "EMG max względne"
+
+msgid "average_EMG"
+msgstr "EMG średnie"
+
+msgid "average_relative_EMG"
+msgstr "EMG średnie względne"
+
+msgid "EMG_surface_area"
+msgstr "EMG pole powierzchni"
+
+msgid "EMG_relative_surface_area"
+msgstr "EMG pole powierzchni względne"
+
+msgid "EMG_standard_deviation"
+msgstr "EMG odchylenie standardowe"
+
+msgid "WNM"
+msgstr "WNM"
+
+msgid "neurophysiological_study"
+msgstr "badanie neurofizjologiczne"
+
+msgid "neurophysiological_studys"
+msgstr "badania neurofizjologiczne"
