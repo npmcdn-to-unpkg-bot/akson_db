@@ -382,6 +382,9 @@ msgstr "ruch bierny"
 msgid "muscle_strength"
 msgstr "siła mięśniowa"
 
+msgid "muscle_strengths"
+msgstr "siły mięśniowe"
+
 msgid "straightening"
 msgstr "prostowanie"
 
@@ -840,3 +843,114 @@ msgstr "średnica cylindra"
 
 msgid "weight"
 msgstr "waga"
+
+msgid "SFTR measures"
+msgstr "zapis systemem SFTR pomiarów kątowych"
+
+msgid "joints"
+msgstr "stawy"
+
+msgid "plane_symbol"
+msgstr "symbol płaszczyzny"
+
+msgid "movements"
+msgstr "ruchy"
+
+msgid "cervical_sftr"
+msgstr "szyjnego odcinka kręgosłupa"
+
+msgid "thoraco_lumbar_sftr"
+msgstr "piersiowo-lędźwiowego odcinka kręgosłupa"
+
+msgid "shoulder_sftr"
+msgstr "barkowy"
+
+msgid "elbow_sftr"
+msgstr "łokciowy"
+
+msgid "radial_ulnar_nearer_and_further_sftr"
+msgstr "promieniowo-łokciowy bliższy i dalszy"
+
+msgid "radial_carpal_sftr"
+msgstr "promieniowo-nadgarstkowy"
+
+msgid "carpo_metacarpal_sftr"
+msgstr "nadgarstkowo-śródręczny I (CMC)"
+
+msgid "metacarpal_finger1_sftr"
+msgstr "śródręczno-palcowy I (MCP)"
+
+msgid "metacarpal_finger2_sftr"
+msgstr "śródręczno palcowe II V"
+
+msgid "interphalangeal_sftr"
+msgstr "międzypaliczkowy I (IPP)"
+
+msgid "interphalangeal_nearer_sftr"
+msgstr "międzypaliczowe bliższe II-V (DIP)"
+
+msgid "interphalangeal_further_sftr"
+msgstr "międzypaliczowe dalsze II-V (DIP)"
+
+msgid "hip_sftr"
+msgstr "biodrowy"
+
+msgid "knee_sftr"
+msgstr "kolanowy"
+
+msgid "angle_upper_and_lower_sftr"
+msgstr "skokowy górny i dolny"
+
+msgid "extension"
+msgstr "wyprost"
+
+msgid "bend"
+msgstr "zgięcie"
+
+msgid "left_slope"
+msgstr "skłon boczny w lewo"
+
+msgid "right_slope"
+msgstr "skłon boczny w prawo"
+
+msgid "left_rotation"
+msgstr "rotacja w lewo"
+
+msgid "right_rotation"
+msgstr "rotacja w prawo"
+
+msgid "abduction"
+msgstr "odwodzenie"
+
+msgid "horizontal_plane_extension"
+msgstr "wyprost w płaszczyźnie horyzontalnej"
+
+msgid "horizontal_plane_bend"
+msgstr "zgięcie w płaszczyźnie horyzontalnej"
+
+msgid "outter_rotation"
+msgstr "rotacja zewnętrzna"
+
+msgid "inner_rotation"
+msgstr "rotacja wewnętrzna"
+
+msgid "elbow_abduction"
+msgstr "odwodzenie łokciowe"
+
+msgid "inradial_abduction"
+msgstr "odwodzenie dopromieniowe"
+
+msgid "inelbow_adduction"
+msgstr "przywodzenie dołokciowe"
+
+msgid "hand_abduction"
+msgstr "odwodzenie dłoniowe"
+
+msgid "hand_adduction"
+msgstr "przywodzenie dłoniowe"
+
+msgid "guided"
+msgstr "odprowadzenie"
+
+msgid "enclose"
+msgstr "obwodzenie"
