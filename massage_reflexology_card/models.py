@@ -19,7 +19,7 @@ class MassageReflexologyCard(models.Model):
     additional_notes = AdditionalNotesField(blank=True, null=True)
 
     def __str__(self):
-        return "{0} {1}".format(self.patient.first_name, self.patient.last_name, self.date)
+        return "{0} {1} {2}".format(self.patient.first_name, self.patient.last_name, self.date)
 
     class Meta:
         ordering = ('patient', 'date',)

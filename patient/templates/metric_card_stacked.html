@@ -1,0 +1,143 @@
+{% load i18n admin_urls admin_static metric_card_filters metric_card_filters %}
+<div class="inline-group" id="{{ inline_admin_formset.formset.prefix }}-group">
+  <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
+{{ inline_admin_formset.formset.management_form }}
+{{ inline_admin_formset.formset.non_form_errors }}
+
+{% for inline_admin_form in inline_admin_formset %}<div class="inline-related{% if inline_admin_form.original or inline_admin_form.show_url %} has_original{% endif %}{% if forloop.last %} empty-form last-related{% endif %}" id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
+  <h3><b>{{ inline_admin_formset.opts.verbose_name|capfirst }}:</b>&nbsp;<span class="inline_label">{% if inline_admin_form.original %}{{ inline_admin_form.original }}{% if inline_admin_form.model_admin.show_change_link and inline_admin_form.model_admin.has_registered_model %} <a href="{% url inline_admin_form.model_admin.opts|admin_urlname:'change' inline_admin_form.original.pk|admin_urlquote %}" class="inlinechangelink">{% trans "Change" %}</a>{% endif %}
+{% else %}#{{ forloop.counter }}{% endif %}</span>
+      {% if inline_admin_form.show_url %}<a href="{{ inline_admin_form.absolute_url }}">{% trans "View on site" %}</a>{% endif %}
+    {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}<span class="delete">{{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}</span>{% endif %}
+  </h3>
+  {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
+  {% for fieldset in inline_admin_form %}
+
+
+
+
+{% if "limb" in fieldset.name or "joint" in fieldset.name %}
+    {% if "Upper" in fieldset.name or "Shoulder" in fieldset.name or "Hip" in fieldset.name %}
+    <fieldset class="module aligned {{ fieldset.classes }}">
+        <h2>{% if fieldset.description %}{% trans fieldset.description|safe %}{% else %}{{ fieldset.name|safe }}{% endif %}</h2>
+    {% endif %}
+<table {% if "limb" in fieldset.name %} style="display: inline-table;"{% endif %} >
+        <thead>
+            {% if "joint" in fieldset.name %}
+            <tr>
+                <th rowspan="2">{% trans fieldset.name|capfirst %}</th>
+                    {% with 'left right' as sides %}
+                        {% for side in sides.split %}
+                <th colspan="3">{% trans side|capfirst %}</th>
+                {% endfor %}
+                    {% endwith %}
+            </tr>
+            {% endif %}
+            <tr>
+                {% if "joint" not in fieldset.name %}
+                    <th>{% trans fieldset.name|capfirst %}</th>
+                {% endif %}
+                {% if "limb" in fieldset.name %}
+                    {% with 'left right' as sides %}
+                        {% for side in sides.split %}
+                        <th>{% trans side|capfirst %}</th>
+                    {% endfor %}
+                    {% endwith %}
+                {% elif "joint" in fieldset.name %}
+                    {% with 'left right' as sides %}
+                        {% for side in sides.split %}
+                    {% for joint_measure in joint_measures %}
+                        <th>{% trans joint_measure|capfirst %}</th>
+                    {% endfor %}
+                    {% endfor %}
+                    {% endwith %}
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for line in fieldset %}
+            <tr>
+                <td>
+                    {% if "limb" in fieldset.name %}
+                        {{ line.fields.0|get_limb_measure|capfirst }}
+                    {% elif "joint" in fieldset.name %}
+                        {{ line.fields.0|get_joint_measure|capfirst }}
+                    {% endif %}
+                </td>
+                {% for field in line %}
+                    <td>{{ field.contents }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<!-- TODO poprawic zeby bylo wszedzie odpowiednio
+{% if "Lower limb" in fieldset.name %}
+</fieldset>
+{% endif %}
+-->
+
+    {% elif "sftr" in fieldset.name %}
+{% if "cervical_sftr" in fieldset.name %}
+<fieldset class="module aligned {{ fieldset.classes }}">
+    <h2>{% if fieldset.description %}{% trans fieldset.description|safe %}{% else %}{{ fieldset.name|safe }}{% endif %}</h2>
+    <table>
+        <thead>
+            <tr>
+                {% for sftr_header_entity in sftr_header %}
+                    <th>{% trans sftr_header_entity|capfirst %}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+{% endif %}
+            {% for line in fieldset %}
+            <tr>
+                {% if forloop.counter0 == 0 %}
+                    <td rowspan="{{ forloop.revcounter }}">{% trans fieldset.name|capfirst %}</td>
+                {% endif %}
+                <td>
+                    {{ line.fields.0|get_sftr_plane|capfirst }}
+                </td>
+                <td>
+                {% for field in line %}
+                    {% if forloop.counter0 == 0 %}
+                        {{ field.field.name|get_sftr_movement }}
+                        {{ field.contents }}
+                        - 0 -
+                    {% else %}
+                        {{ field.contents }}
+                        {{ field.field.name|get_sftr_movement }}
+                    {% endif %}
+                {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+{% if "angle_upper_and_lower_sftr" in fieldset.name %}
+        </tbody>
+    </table>
+{% endif %}
+
+      {% else %}
+          {% include "admin/includes/fieldset.html" %}
+      {% endif %}
+
+
+
+
+  {% endfor %}
+  {% if inline_admin_form.needs_explicit_pk_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
+  {{ inline_admin_form.fk_field.field }}
+</div>{% endfor %}
+</div>
+
+<script type="text/javascript">
+(function($) {
+  $("#{{ inline_admin_formset.formset.prefix|escapejs }}-group .inline-related").stackedFormset({
+    prefix: "{{ inline_admin_formset.formset.prefix|escapejs }}",
+    deleteText: "{% filter escapejs %}{% trans "Remove" %}{% endfilter %}",
+    addText: "{% filter escapejs %}{% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|capfirst %}Add another {{ verbose_name }}{% endblocktrans %}{% endfilter %}"
+  });
+})(django.jQuery);
+</script>

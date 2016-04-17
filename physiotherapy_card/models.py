@@ -20,6 +20,9 @@ class PhysiotherapyCard(models.Model):
     class Meta:
         ordering = ('patient', 'date',)
 
+    def __str__(self):
+        return "{0} - {1}".format(self.date, self.parameters)
+
 
 @verbose_names
 class TreatmentType(Feature):

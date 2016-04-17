@@ -76,6 +76,7 @@ class PhysiotherapyCardInline(PatientInline):
 class MetricCardInline(PatientStackedInline):
     model = MetricCard
     fieldsets = deepcopy(MetricCardCardAdmin.fieldsets)
+    template = 'metric_card_stacked.html'
 
 
 @verbose_names_inline
@@ -94,6 +95,7 @@ class TimeSpreadInline(PatientInline):
 class UpperLimbStudyInline(PatientStackedInline):
     model = UpperLimbStudy
     fieldsets = deepcopy(UpperLimbStudyCardAdmin.fieldsets)
+    template = 'upper_limb_study_stacked.html'
 
 
 @verbose_names_inline
