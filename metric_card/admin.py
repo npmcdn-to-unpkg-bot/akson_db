@@ -5,6 +5,8 @@ from metric_card.models import *
 
 
 class MetricCardCardAdmin(AksonCardAdmin):
+    add_form_template = 'metric_card.html'
+
     fieldsets = (
         (txt('General'),
          {'fields': (('patient', 'examiners', 'date'),

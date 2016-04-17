@@ -1,0 +1,115 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static metric_card_filters %}
+
+{% block field_sets %}
+{% for fieldset in adminform %}
+
+{% if "limb" in fieldset.name or "joint" in fieldset.name %}
+    {% if "Upper" in fieldset.name or "Shoulder" in fieldset.name or "Hip" in fieldset.name %}
+    <fieldset class="module aligned {{ fieldset.classes }}">
+        <h2>{% if fieldset.description %}{% trans fieldset.description|safe %}{% else %}{{ fieldset.name|safe }}{% endif %}</h2>
+    {% endif %}
+<table {% if "limb" in fieldset.name %} style="display: inline-table;"{% endif %} >
+        <thead>
+            {% if "joint" in fieldset.name %}
+            <tr>
+                <th rowspan="2">{% trans fieldset.name|capfirst %}</th>
+                    {% with 'left right' as sides %}
+                        {% for side in sides.split %}
+                <th colspan="3">{% trans side|capfirst %}</th>
+                {% endfor %}
+                    {% endwith %}
+            </tr>
+            {% endif %}
+            <tr>
+                {% if "joint" not in fieldset.name %}
+                    <th>{% trans fieldset.name|capfirst %}</th>
+                {% endif %}
+                {% if "limb" in fieldset.name %}
+                    {% with 'left right' as sides %}
+                        {% for side in sides.split %}
+                        <th>{% trans side|capfirst %}</th>
+                    {% endfor %}
+                    {% endwith %}
+                {% elif "joint" in fieldset.name %}
+                    {% with 'left right' as sides %}
+                        {% for side in sides.split %}
+                    {% for joint_measure in joint_measures %}
+                        <th>{% trans joint_measure|capfirst %}</th>
+                    {% endfor %}
+                    {% endfor %}
+                    {% endwith %}
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for line in fieldset %}
+            <tr>
+                <td>
+                    {% if "limb" in fieldset.name %}
+                        {{ line.fields.0|get_limb_measure|capfirst }}
+                    {% elif "joint" in fieldset.name %}
+                        {{ line.fields.0|get_joint_measure|capfirst }}
+                    {% endif %}
+                </td>
+                {% for field in line %}
+                    <td>{{ field.field }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<!-- TODO poprawic zeby bylo wszedzie odpowiednio
+{% if "Lower limb" in fieldset.name %}
+</fieldset>
+{% endif %}
+-->
+
+    {% elif "sftr" in fieldset.name %}
+{% if "cervical_sftr" in fieldset.name %}
+<fieldset class="module aligned {{ fieldset.classes }}">
+    <h2>{% if fieldset.description %}{% trans fieldset.description|safe %}{% else %}{{ fieldset.name|safe }}{% endif %}</h2>
+    <table>
+        <thead>
+            <tr>
+                {% for sftr_header_entity in sftr_header %}
+                    <th>{% trans sftr_header_entity|capfirst %}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+{% endif %}
+            {% for line in fieldset %}
+            <tr>
+                {% if forloop.counter0 == 0 %}
+                    <td rowspan="{{ forloop.revcounter }}">{% trans fieldset.name|capfirst %}</td>
+                {% endif %}
+                <td>
+                    {{ line.fields.0|get_sftr_plane|capfirst }}
+                </td>
+                <td>
+                {% for field in line %}
+                    {% if forloop.counter0 == 0 %}
+                        {{ field.field.name|get_sftr_movement }}
+                        {{ field.field }}
+                        - 0 -
+                    {% else %}
+                        {{ field.field }}
+                        {{ field.field.name|get_sftr_movement }}
+                    {% endif %}
+                {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+{% if "angle_upper_and_lower_sftr" in fieldset.name %}
+        </tbody>
+    </table>
+{% endif %}
+
+      {% else %}
+          {% include "admin/includes/fieldset.html" %}
+      {% endif %}
+
+{% endfor %}
+{% endblock %}
