@@ -13,6 +13,7 @@ from track_gait_training.admin import TrackGaitTraining, TrackGaitTrainingCardAd
 from treatment_record.admin import TreatmentRecord, TreatmentRecordCardAdmin
 from upper_limb_study.admin import UpperLimbStudy, UpperLimbStudyCardAdmin
 from upper_limb_therapy.admin import UpperLimbTherapy, UpperLimbTherapyCardAdmin
+from neurophysiological_study.admin import NeurophysiologicalStudy, NeurophysiologicalStudyAdmin
 
 
 class PatientInlineBase(object):
@@ -106,6 +107,12 @@ class UpperLimbTherapyInline(PatientInline):
     fieldsets = deepcopy(UpperLimbTherapyCardAdmin.fieldsets)
 
 
+@verbose_names_inline
+class NeurophysiologicalStudyInline(PatientInline):
+    model = NeurophysiologicalStudy
+    fieldsets = deepcopy(NeurophysiologicalStudyAdmin.fieldsets)
+
+
 class PatientCardAdmin(AksonBaseAdmin):
     change_form_template = 'patient.html'
     model = Patient
@@ -119,6 +126,7 @@ class PatientCardAdmin(AksonBaseAdmin):
         UpperLimbStudyInline,
         UpperLimbTherapyInline,
         MassageReflexologyCardInline,
+        NeurophysiologicalStudyInline,
         TreatmentRecordInline,
         #            # AsiaCardInline,
     ]
