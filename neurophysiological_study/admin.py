@@ -1,4 +1,5 @@
 from common.admin import AksonCardAdmin, admin
+from common.feature import FeatureCardAdmin
 from common.localization import txt
 from neurophysiological_study.models import *
 
@@ -7,6 +8,9 @@ class NeurophysiologicalStudyAdmin(AksonCardAdmin):
     fieldsets = (
         (txt('General'),
          {'fields': (('patient', 'examiners', 'date', 'mass'),
+                     )}),
+        (txt('Environment'),
+         {'fields': (('mass', 'muscle'),
                      )}),
         (txt('Results'),
          {'fields': (('MVIC', 'relative_MVIC'),
@@ -23,3 +27,5 @@ class NeurophysiologicalStudyAdmin(AksonCardAdmin):
     list_display = ('patient', 'date', 'mass', 'WNM')
 
 admin.site.register(NeurophysiologicalStudy, NeurophysiologicalStudyAdmin)
+
+admin.site.register(Muscle, FeatureCardAdmin)

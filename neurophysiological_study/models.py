@@ -1,4 +1,5 @@
 from common.models import *
+from common.feature import Feature
 from common.localization import verbose_names
 from patient.models import Patient
 
@@ -11,7 +12,9 @@ class NeurophysiologicalStudy(models.Model):
     patient = models.ForeignKey(Patient)
     examiners = models.ManyToManyField(User)
     date = models.DateField(default=datetime.now)
+
     mass = ShortFloatField()
+    muscle = models.ForeignKey('Muscle')
 
     MVIC = ShortFloatField(blank=True, null=True)
     relative_MVIC = ShortFloatField(blank=True, null=True)
@@ -36,3 +39,8 @@ class NeurophysiologicalStudy(models.Model):
 
     def __str__(self):
         return "{0} - {1}".format(self.mass, self.WNM)
+
+
+@verbose_names
+class Muscle(Feature):
+    pass
