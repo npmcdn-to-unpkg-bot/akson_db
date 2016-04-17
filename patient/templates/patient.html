@@ -1,0 +1,51 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static %}
+
+{% block extrahead %}
+{{ block.super }}
+<script type="text/javascript">
+    var $ = django.jQuery;
+    function toogleFieldset(name) {
+        $(".inline-group").hide();
+        $("#" + name).show();
+    }
+
+    $(document).ready(function() {
+        $(".inline-group").hide();
+        $(".inline-group:first").show();
+    });
+</script>
+<style>
+.inline-button {
+    float: left;
+    padding: 0.5em;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="inline-buttons">
+    <h2>
+    <a href='#' class="inline-button {% if inline_admin_formset.formset.errors %}error-inline{% endif %}" onClick='toogleFieldset("patient-group")'>
+        {{ opts.verbose_name|capfirst }}
+    </a>
+    </h2>
+    {% for inline_admin_formset in inline_admin_formsets %}
+        <h2>
+            <a href='#' class="inline-button {% if inline_admin_formset.formset.errors|length >= 1 and inline_admin_formset.formset.errors.0 %}error-inline{% endif %}" onClick='toogleFieldset("{{ inline_admin_formset.formset.prefix }}-group")'>
+                {{ inline_admin_formset.opts.verbose_name_plural|capfirst }}
+            </a>
+        </h2>
+    {% endfor %}
+</div>
+{{ block.super }}
+{% endblock %}
+
+{% block field_sets %}
+<div class="inline-group" id="patient-group">
+{% for fieldset in adminform %}
+  {% include "admin/includes/fieldset.html" %}
+{% endfor %}
+</div>
+{% endblock %}
+

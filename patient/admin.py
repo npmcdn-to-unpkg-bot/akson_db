@@ -107,6 +107,7 @@ class UpperLimbTherapyInline(PatientInline):
 
 
 class PatientCardAdmin(AksonBaseAdmin):
+    change_form_template = 'patient.html'
     model = Patient
     inlines = [
         TimeSpreadInline,
