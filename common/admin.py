@@ -7,7 +7,7 @@ class AksonBaseAdmin(admin.ModelAdmin):
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(AksonBaseAdmin, self).get_form(request, obj, **kwargs)
-        usernames = ['therapist', 'leading_people', 'examiners']
+        usernames = ['therapist', 'leading_people', 'examiners', 'orderer']
         for username in usernames:
             if username in tuple(form.base_fields):
                 form.base_fields[username].initial = [request.user.pk]
