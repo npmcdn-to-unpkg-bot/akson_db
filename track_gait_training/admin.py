@@ -17,7 +17,7 @@ class TrackGaitTrainingCardAdmin(AksonCardAdmin):
          {'fields': (('support_type', 'left_orthosis', 'right_orthosis'),
                      )}),
         (txt('Results'),
-         {'fields': (('restoration_time', 'gait_speed', 'gait_time', 'fixation_location', 'load'),
+         {'fields': (('restoration_time', 'gait_speed', 'gait_time', 'distance', 'fixation_location', 'load'),
                      )}),
         (txt('Additionals'),
          {'fields': ('additional_notes',

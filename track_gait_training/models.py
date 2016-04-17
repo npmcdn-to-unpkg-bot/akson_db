@@ -23,6 +23,7 @@ class TrackGaitTraining(models.Model):
     gait_speed = ShortFloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])  # [m/s]
     gait_time = models.TimeField()  # TODO try datetime.widget = forms.SplitDateTimeWidget(time_format=('%H:%M'))
     gait_time.widget = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
+    distance = ShortFloatField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(1000)])  # [m]
 
     support_type = models.ManyToManyField('SupportType')
     left_orthosis = models.ManyToManyField('gait_reeducation_card.OrthosisType', related_name="LeftOrthosis",
