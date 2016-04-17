@@ -144,7 +144,7 @@ class PatientCardAdmin(AksonBaseAdmin):
         (txt('Injury info'),
          {'fields': (('date_of_injury', 'time_of_injury',),
                      ('date_of_operation', 'time_of_operation',),
-                     ('therapy_program',)
+                     ('additional_notes',)
                      )})
     )
 
