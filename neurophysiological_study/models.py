@@ -11,23 +11,23 @@ class NeurophysiologicalStudy(models.Model):
     patient = models.ForeignKey(Patient)
     examiners = models.ManyToManyField(User)
     date = models.DateField(default=datetime.now)
-
     mass = ShortFloatField()
-    MVIC = ShortFloatField()
-    relative_MVIC = ShortFloatField()
 
-    max_EMG = ShortFloatField()
-    max_relative_EMG = ShortFloatField()
+    MVIC = ShortFloatField(blank=True, null=True)
+    relative_MVIC = ShortFloatField(blank=True, null=True)
 
-    average_EMG = ShortFloatField()
-    average_relative_EMG = ShortFloatField()
+    max_EMG = ShortFloatField(blank=True, null=True)
+    max_relative_EMG = ShortFloatField(blank=True, null=True)
 
-    EMG_surface_area = ShortFloatField()
-    EMG_relative_surface_area = ShortFloatField()
+    average_EMG = ShortFloatField(blank=True, null=True)
+    average_relative_EMG = ShortFloatField(blank=True, null=True)
 
-    EMG_standard_deviation = ShortFloatField()
+    EMG_surface_area = ShortFloatField(blank=True, null=True)
+    EMG_relative_surface_area = ShortFloatField(blank=True, null=True)
 
-    WNM = ShortFloatField()
+    EMG_standard_deviation = ShortFloatField(blank=True, null=True)
+
+    WNM = ShortFloatField(blank=True, null=True)
 
     additional_notes = AdditionalNotesField(blank=True, null=True)
 
