@@ -6,7 +6,7 @@ from patient.models import Patient
 from gait_reeducation_card.admin import GaitReeducationCard, GaitReeducationCardCardAdmin
 from massage_reflexology_card.admin import MassageReflexologyCard, MassageReflexologyCardCardAdmin
 from metric_card.admin import MetricCard, MetricCardCardAdmin
-from neurorehabilitation_card.admin import NeurorehabilitationCard, NeurorehabilitationCardCardAdmin
+from neurorehabilitation_card.admin import NeurorehabilitationCard, NeurorehabilitationCardAdmin
 from physiotherapy_card.admin import PhysiotherapyCard, PhysiotherapyCardCardAdmin
 from time_spread.admin import TimeSpread, TimeSpreadCardAdmin
 from track_gait_training.admin import TrackGaitTraining, TrackGaitTrainingCardAdmin
@@ -61,7 +61,7 @@ class TrackGaitTrainingInline(PatientInline):
 @verbose_names_inline
 class NeurorehabilitationCardInline(PatientInline):
     model = NeurorehabilitationCard
-    fieldsets = deepcopy(NeurorehabilitationCardCardAdmin.fieldsets)
+    fieldsets = deepcopy(NeurorehabilitationCardAdmin.fieldsets)
 
 
 @verbose_names_inline

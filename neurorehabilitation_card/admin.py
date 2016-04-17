@@ -4,7 +4,7 @@ from common.localization import txt
 from neurorehabilitation_card.models import *
 
 
-class NeurorehabilitationCardCardAdmin(AksonCardAdmin):
+class NeurorehabilitationCardAdmin(AksonCardAdmin):
     fieldsets = (
         (txt('General'),
          {'fields': (('patient', 'leading_people', 'date',),
@@ -25,7 +25,7 @@ class NeurorehabilitationCardCardAdmin(AksonCardAdmin):
     list_display = ('patient', 'date', 'excercise_signature', 'load', 'repetitions', 'sets', 'time', 'frequency')
 
 
-admin.site.register(NeurorehabilitationCard, NeurorehabilitationCardCardAdmin)
+admin.site.register(NeurorehabilitationCard, NeurorehabilitationCardAdmin)
 
 admin.site.register(ExcerciseSignature, FeatureCardAdmin)
 admin.site.register(StartingPosition, FeatureCardAdmin)

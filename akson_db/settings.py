@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     'upper_limb_therapy',
     'metric_card',
     'treatment_record',
+    'neurophysiological_study',
 ]
 
 MIDDLEWARE_CLASSES = [
