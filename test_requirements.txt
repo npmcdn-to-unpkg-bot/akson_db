@@ -1,2 +1,3 @@
 django-autofixture
 coveralls
+sqlparse
