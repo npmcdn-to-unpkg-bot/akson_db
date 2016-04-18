@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 
+admin.site.site_title = 'Baza danych Akson'
+admin.site.site_header = 'Baza danych Akson'
 admin.autodiscover()
 
 urlpatterns = [
