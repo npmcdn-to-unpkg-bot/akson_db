@@ -6,13 +6,13 @@ python:
   - "3.5"
 
 env:
-  - DB_NAME=akson_prod DB_USER="" DB_PASS=""
+  - DB_NAME=akson_test DB_USER="" DB_PASS=""
 
 # command to install dependencies
 install:
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt
-  - mysql < ./database/drop_and_create_database.sql
+  - mysql -u$DB_USER -p$DB_PASS< ./database/drop_and_create_database.sql
   - python manage.py makemigrations
   - python manage.py migrate
   - python manage.py compilemessages
