@@ -24,4 +24,5 @@ script:
   - python manage.py check
   - python manage.py test --settings=akson_db.test_settings
   - coverage run manage.py test --settings=akson_db.test_settings
+
 after_success: coveralls
