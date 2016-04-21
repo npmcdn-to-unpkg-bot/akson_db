@@ -1039,6 +1039,9 @@ msgstr "WNM"
 msgid "neurophysiological_study"
 msgstr "badanie neurofizjologiczne"
 
+msgid "neurophysiological_studys"
+msgstr "badania neurofizjologiczne"
+
 msgid "neurorehabilitation"
 msgstr "neurorehabilitacja"
 

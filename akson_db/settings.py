@@ -16,7 +16,7 @@ import os
 AKSON_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(AKSON_DIR)
 
-DEBUG = False
+DEBUG = True
 
 ADMINS = (
     ('Grzegorz Terlikowski', 'terlikowski.grzegorz@gmail.com'),

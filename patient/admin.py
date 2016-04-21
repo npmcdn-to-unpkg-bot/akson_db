@@ -15,6 +15,11 @@ from upper_limb_study.admin import UpperLimbStudy, UpperLimbStudyCardAdmin
 from upper_limb_therapy.admin import UpperLimbTherapy, UpperLimbTherapyCardAdmin
 from neurophysiological_study.admin import NeurophysiologicalStudy, NeurophysiologicalStudyAdmin
 from dynamometry_card.admin import DynamometryCard, DynamometryCardAdmin
+from therapy_program.admin import Neurorehabilitation, NeurorehabilitationAdmin,\
+    MedicalConsultation, MedicalConsultationAdmin,\
+    Physiotherapy, PhysiotherapyAdmin,\
+    MassageReflexology, MassageReflexologyAdmin,\
+    Diet, DietAdmin
 
 
 class PatientInlineBase(object):
@@ -122,6 +127,36 @@ class DynamometryCardInline(PatientInline):
     fieldsets = deepcopy(DynamometryCardAdmin.fieldsets)
 
 
+@verbose_names_inline
+class ProgramNeurorehabilitationInline(PatientInline):
+    model = Neurorehabilitation
+    fieldsets = deepcopy(NeurorehabilitationAdmin.fieldsets)
+
+
+@verbose_names_inline
+class ProgramMedicalConsultationInline(PatientInline):
+    model = MedicalConsultation
+    fieldsets = deepcopy(MedicalConsultationAdmin.fieldsets)
+
+
+@verbose_names_inline
+class ProgramPhysiotherapyInline(PatientInline):
+    model = Physiotherapy
+    fieldsets = deepcopy(PhysiotherapyAdmin.fieldsets)
+
+
+@verbose_names_inline
+class ProgramMassageReflexologyInline(PatientInline):
+    model = MassageReflexology
+    fieldsets = deepcopy(MassageReflexologyAdmin.fieldsets)
+
+
+@verbose_names_inline
+class ProgramDietInline(PatientInline):
+    model = Diet
+    fieldsets = deepcopy(DietAdmin.fieldsets)
+
+
 class PatientCardAdmin(AksonBaseAdmin):
     change_form_template = 'patient.html'
     model = Patient
@@ -138,6 +173,11 @@ class PatientCardAdmin(AksonBaseAdmin):
         NeurophysiologicalStudyInline,
         DynamometryCardInline,
         TreatmentRecordInline,
+        ProgramNeurorehabilitationInline,
+        ProgramMedicalConsultationInline,
+        ProgramPhysiotherapyInline,
+        ProgramMassageReflexologyInline,
+        ProgramDietInline,
         #            # AsiaCardInline,
     ]
     fieldsets = (
@@ -177,6 +217,11 @@ class PatientCardAdmin(AksonBaseAdmin):
 
     list_display = ('last_name', 'first_name', 'birth_date', 'date_of_injury', 'levels_of_injury')
     search_fields = ['last_name', 'first_name']
+
+    def change_view(self, request, object_id, form_url='', extra_context=None):
+        extra_context = extra_context or {}
+        return super(PatientCardAdmin, self).change_view(request, object_id=object_id, form_url=form_url,
+                                                         extra_context=extra_context)
 
     def has_delete_permission(self, request, obj=None):
         return False
