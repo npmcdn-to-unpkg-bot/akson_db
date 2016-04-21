@@ -1039,5 +1039,53 @@ msgstr "WNM"
 msgid "neurophysiological_study"
 msgstr "badanie neurofizjologiczne"
 
-msgid "neurophysiological_studys"
-msgstr "badania neurofizjologiczne"
+msgid "neurorehabilitation"
+msgstr "neurorehabilitacja"
+
+msgid "neurorehabilitations"
+msgstr "neurorehabilitacje"
+
+msgid "medical_consultation"
+msgstr "konsultacja lekarska"
+
+msgid "medical_consultations"
+msgstr "konsultacje lekarskie"
+
+msgid "physiotherapy"
+msgstr "fizykoterapia"
+
+msgid "physiotherapys"
+msgstr "fizykoterapie"
+
+msgid "massage_reflexology"
+msgstr "masaż i refleksoterapia"
+
+msgid "massage_reflexologys"
+msgstr "masaże i refleksoterapie"
+
+msgid "diet"
+msgstr "dieta"
+
+msgid "diets"
+msgstr "diety"
+
+msgid "recommendations"
+msgstr "rekomendacje"
+
+msgid "Recommendations"
+msgstr "Rekomendacje"
+
+msgid "quantity"
+msgstr "ilość/częstotliwość"
+
+msgid "pharmacology_phytotherapy"
+msgstr "farmakologia/fitoterapia"
+
+msgid "commissioned_study"
+msgstr "zlecone badania"
+
+msgid "procedure_types"
+msgstr "rodzaje procedur"
+
+msgid "program_description"
+msgstr "opis programu"
