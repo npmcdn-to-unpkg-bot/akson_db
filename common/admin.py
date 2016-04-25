@@ -14,7 +14,7 @@ class AksonBaseAdmin(admin.ModelAdmin):
         return form
 
     def __init__(self, model, admin_site):
-        self.form = select2_modelform(model, attrs={'width': '400px'})
+        self.form = select2_modelform(model, attrs={'width': '21em'})
         super(AksonBaseAdmin, self).__init__(model, admin_site)
 
 

@@ -33,7 +33,7 @@
     {% for inline_admin_formset in inline_admin_formsets %}
         <h2>
             <a href='#' class="inline-button {% if inline_admin_formset.formset.errors|length >= 1 and inline_admin_formset.formset.errors.0 %}error-inline{% endif %}" onClick='toogleFieldset("{{ inline_admin_formset.formset.prefix }}-group")'>
-                {{ inline_admin_formset.opts.verbose_name_plural|capfirst }}
+                {{ inline_admin_formset.opts.verbose_name|capfirst }}
             </a>
         </h2>
     {% endfor %}
@@ -48,4 +48,3 @@
 {% endfor %}
 </div>
 {% endblock %}
-
