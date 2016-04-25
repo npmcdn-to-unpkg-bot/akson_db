@@ -16,7 +16,7 @@ class NeurorehabilitationCard(models.Model):
     date = models.DateField(default=datetime.now)
 
     excercise_signature = models.ForeignKey('ExcerciseSignature')
-    load = ShortFloatField(validators=[MinValueValidator(-40000), MaxValueValidator(40000)])  # [g]
+    load = ShortFloatField(validators=[MinValueValidator(-80000), MaxValueValidator(80000)])  # [g]
     repetitions = ShortIntegerField(validators=[MinValueValidator(1), MaxValueValidator(999)])
     sets = ShortIntegerField(validators=[MinValueValidator(1), MaxValueValidator(100)])
 
