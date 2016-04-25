@@ -13,6 +13,7 @@ class DynamometryCard(models.Model):
     date = models.DateField(default=datetime.now)
 
     muscle = models.ForeignKey(to='neurophysiological_study.Muscle')
+    study_position = models.ForeignKey(to='neurophysiological_study.StudyPosition')
     duration = models.DurationField()
 
     max = ShortFloatField(blank=True, null=True)

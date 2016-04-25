@@ -992,16 +992,16 @@ msgid "standard_deviation"
 msgstr "odchylenie standardowe"
 
 msgid "to_max"
-msgstr "do maxa"
+msgstr "czas osiągnięcia max. skurczu"
 
 msgid "relative_to_max"
-msgstr "do maxa względnie"
+msgstr "czas osiągnięcia max. skurczu względem wzorca"
 
 msgid "to_zero"
-msgstr "do zera"
+msgstr "czas osiągnięcia rozluźnienia"
 
 msgid "relative_to_zero"
-msgstr "do zera względnie"
+msgstr "czas osiągnięcia rozluźnienia względem wzorca"
 
 msgid "mass"
 msgstr "ciężar"
@@ -1092,3 +1092,9 @@ msgstr "rodzaje procedur"
 
 msgid "program_description"
 msgstr "opis programu"
+
+msgid "study_position"
+msgstr "pozycja badania"
+
+msgid "study_positions"
+msgstr "pozycje badania"

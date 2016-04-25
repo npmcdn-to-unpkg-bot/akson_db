@@ -10,7 +10,7 @@ class NeurophysiologicalStudyAdmin(AksonCardAdmin):
          {'fields': (('patient', 'examiners', 'date'),
                      )}),
         (txt('Environment'),
-         {'fields': (('mass', 'muscle'),
+         {'fields': (('mass', 'muscle', 'study_position'),
                      )}),
         (txt('Results'),
          {'fields': (('MVIC', 'relative_MVIC'),
@@ -29,3 +29,4 @@ class NeurophysiologicalStudyAdmin(AksonCardAdmin):
 admin.site.register(NeurophysiologicalStudy, NeurophysiologicalStudyAdmin)
 
 admin.site.register(Muscle, FeatureCardAdmin)
+admin.site.register(StudyPosition, FeatureCardAdmin)

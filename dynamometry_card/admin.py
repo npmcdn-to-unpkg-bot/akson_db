@@ -9,7 +9,7 @@ class DynamometryCardAdmin(AksonCardAdmin):
          {'fields': (('patient', 'examiners', 'date'),
                      )}),
         (txt('Environment'),
-         {'fields': (('muscle', 'duration'),
+         {'fields': (('muscle', 'study_position', 'duration'),
                      )}),
         (txt('Results'),
          {'fields': (('max', 'max_relative'),

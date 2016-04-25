@@ -15,6 +15,7 @@ class NeurophysiologicalStudy(models.Model):
 
     mass = ShortFloatField()
     muscle = models.ForeignKey('Muscle')
+    study_position = models.ForeignKey('StudyPosition')
 
     MVIC = ShortFloatField(blank=True, null=True)
     relative_MVIC = ShortFloatField(blank=True, null=True)
@@ -43,4 +44,9 @@ class NeurophysiologicalStudy(models.Model):
 
 @verbose_names
 class Muscle(Feature):
+    pass
+
+
+@verbose_names
+class StudyPosition(Feature):
     pass
