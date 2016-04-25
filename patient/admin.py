@@ -215,7 +215,15 @@ class PatientCardAdmin(AksonBaseAdmin):
             return txt('None')
     levels_of_injury.short_description = txt('levels_of_injury')
 
-    list_display = ('last_name', 'first_name', 'birth_date', 'date_of_injury', 'levels_of_injury')
+    def asia(self, obj):
+        timespreads = obj.timespread_set.order_by('-begin')
+        if len(timespreads) > 0:
+            return ', '.join([asia.name for asia in timespreads[0].asias.all()])
+        else:
+            return txt('None')
+    asia.short_description = txt('asia')
+
+    list_display = ('last_name', 'first_name', 'birth_date', 'date_of_injury', 'levels_of_injury', 'asia')
     search_fields = ['last_name', 'first_name']
 
     def change_view(self, request, object_id, form_url='', extra_context=None):
