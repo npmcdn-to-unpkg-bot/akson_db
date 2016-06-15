@@ -1,10 +1,18 @@
 {% extends "admin/change_form.html" %}
 {% load i18n admin_static %}
+{% load get_inline_formset %}
 
 {% block extrahead %}
 {{ block.super }}
 <script type="text/javascript">
     var $ = django.jQuery;
+    function toogleToTherapyProgram() {
+        $(".inline-group").hide();
+        {% for verbose_name, inline in therapy_program_inlines.items %}
+            $("#{{ inline_admin_formsets|get_inline_formset:verbose_name }}-group").show();
+        {% endfor %}
+    }
+
     function toogleFieldset(name) {
         $(".inline-group").hide();
         $("#" + name).show();
@@ -26,17 +34,29 @@
 {% block content %}
 <div class="inline-buttons">
     <h2>
-    <a href='#' class="inline-button {% if inline_admin_formset.formset.errors %}error-inline{% endif %}" onClick='toogleFieldset("patient-group")'>
-        {{ opts.verbose_name|capfirst }}
-    </a>
+        <a href='#' class="inline-button {% if inline_admin_formset.formset.errors %}error-inline{% endif %}"
+           onClick='toogleFieldset("patient-group")'>
+            {{ opts.verbose_name|capfirst }}
+        </a>
     </h2>
     {% for inline_admin_formset in inline_admin_formsets %}
+        {% if inline_admin_formset.opts.verbose_name not in therapy_program_inlines %}
         <h2>
-            <a href='#' class="inline-button {% if inline_admin_formset.formset.errors|length >= 1 and inline_admin_formset.formset.errors.0 %}error-inline{% endif %}" onClick='toogleFieldset("{{ inline_admin_formset.formset.prefix }}-group")'>
+            <a href='#'
+               class="inline-button {% if inline_admin_formset.formset.errors|length >= 1 and inline_admin_formset.formset.errors.0 %}error-inline{% endif %}"
+               onClick='toogleFieldset("{{ inline_admin_formset.formset.prefix }}-group")'>
                 {{ inline_admin_formset.opts.verbose_name|capfirst }}
             </a>
         </h2>
+        {% endif %}
     {% endfor %}
+    <h2>
+        <a href='#'
+           class="inline-button"
+           onClick='toogleToTherapyProgram()'>
+             {% trans "therapy_program"|capfirst %}
+        </a>
+    </h2>
 </div>
 {{ block.super }}
 {% endblock %}
