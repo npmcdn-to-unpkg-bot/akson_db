@@ -62,6 +62,13 @@ STATIC_URL = '/static/'
 
 # Application definition
 
+SUPERVISED_APPS = [
+    'neurorehabilitation_card',
+    'gait_reeducation_card',
+    'physiotherapy_card',
+    'track_gait_training',
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -86,6 +93,7 @@ INSTALLED_APPS = [
     'neurophysiological_study',
     'dynamometry_card',
     'therapy_program',
+    'supervision',
 ]
 
 MIDDLEWARE_CLASSES = [
