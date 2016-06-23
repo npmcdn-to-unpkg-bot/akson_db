@@ -16,7 +16,7 @@ import os
 AKSON_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(AKSON_DIR)
 
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
     ('Grzegorz Terlikowski', 'terlikowski.grzegorz@gmail.com'),
@@ -66,7 +66,7 @@ SUPERVISED_APPS = [
     'neurorehabilitation_card',
     'gait_reeducation_card',
     'physiotherapy_card',
-    'track_gait_training',
+    'massage_reflexology_card',
 ]
 
 INSTALLED_APPS = [

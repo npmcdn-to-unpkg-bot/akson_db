@@ -5,48 +5,51 @@
     <title>Akson supervision</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        google.charts.load('current', {packages: ['corechart', 'bar']});
-        google.charts.setOnLoadCallback(drawMaterial);
+        google.charts.load('current', {packages: ['corechart', 'table'], 'language': 'pl'});
+        google.charts.setOnLoadCallback(drawDashboard);
 
-    function drawMaterial() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('timeofday', 'Time of Day');
-      data.addColumn('number', 'Motivation Level');
-      data.addColumn('number', 'Energy Level');
+        function drawDashboard() {
+            var users_data = {{users_data|safe}};
+            data_tables = {}
+            users_data.forEach(function(user_data) {
+                data_tables[user_data.user_id] = google.visualization.arrayToDataTable(user_data.data);
+            });
 
-var data = google.visualization.arrayToDataTable([
-          ['Month', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
-        ]);
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            var table = new google.visualization.Table(document.getElementById('table_div'));
+            function drawCharts() {
+                var options = {
+                    title: user_select.options[user_select.selectedIndex].text,
+                    chartArea: {width: '70%', height: '80%'},
+                    legend: {position: 'right'},
+                    height: 400,
+                    animation:{
+                        startup: true,
+                        duration: 500,
+                        easing: 'out'
+                    }
+                };
+                var selected_user = user_select.options[user_select.selectedIndex].value;
+                var actual_data = data_tables[selected_user];
+                chart.draw(actual_data, options);
+                table.draw(actual_data, {});
+            }
 
+            var user_select = document.getElementById('user_select');
+            user_select.onkeyup = user_select.onchange = drawCharts;
+            user_select.focus();
 
-      var options = {
-        title: 'Motivation and Energy Level Throughout the Day',
-        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-        hAxis: {
-          title: 'Time of Day',
-          format: 'h:mm a',
-          viewWindow: {
-            min: [7, 30, 0],
-            max: [17, 30, 0]
-          }
-        },
-        vAxis: {
-          title: 'Rating (scale of 1-10)'
+            drawCharts();
         }
-      };
-
-      var material = new google.charts.Bar(document.getElementById('chart_div'));
-      material.draw(data, options);
-    }
-
-
     </script>
 </head>
 <body>
+    <select id="user_select" name="select">
+        {% for user in users %}
+            <option value="{{ user.id }}">{{ user.full_name }}</option>
+        {% endfor %}
+    </select>
     <div id="chart_div"></div>
+    <div id="table_div"></div>
 </body>
 </html>

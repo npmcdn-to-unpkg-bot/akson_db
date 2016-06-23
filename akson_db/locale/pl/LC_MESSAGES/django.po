@@ -1098,3 +1098,6 @@ msgstr "pozycja badania"
 
 msgid "study_positions"
 msgstr "pozycje badania"
+
+msgid "month"
+msgstr "miesiąc"
