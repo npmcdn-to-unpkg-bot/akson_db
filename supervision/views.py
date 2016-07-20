@@ -32,7 +32,6 @@ def get_summary_data(user_id):
         string_date = start_date.strftime("%Y-%m")
         qss = [get_queryset(user, app, start_date) for app in settings.SUPERVISED_APPS]
         data.append([string_date] + [qs.count() for qs in qss])
-        print(list(qss))
         unique_patients.append([string_date] + [qs.values('patient').distinct().count() for qs in qss])
 
     return {'user_id': user.id,
