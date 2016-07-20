@@ -65,8 +65,14 @@ STATIC_URL = '/static/'
 SUPERVISED_APPS = [
     'neurorehabilitation_card',
     'gait_reeducation_card',
-    'physiotherapy_card',
     'massage_reflexology_card',
+    'physiotherapy_card',
+    'track_gait_training',
+    'upper_limb_study',
+    'upper_limb_therapy',
+    'metric_card',
+    'neurophysiological_study',
+    'dynamometry_card',
 ]
 
 INSTALLED_APPS = [
@@ -142,7 +148,7 @@ DATABASES = {
     }
 }
 
-if 'RDS_HOSTNAME' in os.environ:
+if 'RDS_HOSTNAME' in os.environ: # AWS environment
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -154,9 +160,9 @@ if 'RDS_HOSTNAME' in os.environ:
         }
     }
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

@@ -9,9 +9,10 @@ from dateutil.relativedelta import relativedelta
 
 
 def get_users():
-    raw_users = list(User.objects.order_by('-last_name').values_list('id', 'first_name', 'last_name'))
+    raw_users = list(User.objects.values_list('id', 'first_name', 'last_name'))
+    print(raw_users)
     users = [{'id': raw_user[0], 'full_name': "{0} {1}".format(*raw_user[1:])} for raw_user in raw_users]
-    return {'users': list(users)}
+    return {'users': sorted(list(users), key=lambda user: user['full_name'])}
 
 
 def get_queryset(user, app, start_date):
@@ -34,7 +35,7 @@ def get_summary_data(user_id):
 
 
 def check_superuser(user):
-    return user.is_superuser;
+    return user.is_superuser
 
 
 @login_required(login_url='/login/')
