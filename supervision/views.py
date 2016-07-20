@@ -25,13 +25,20 @@ def get_summary_data(user_id):
 
     user = User.objects.get(id__exact=user_id)
     data = [list(map(_, ['month'] + settings.SUPERVISED_APPS))]
+    unique_patients = [list(map(_, ['month'] + settings.SUPERVISED_APPS))]
 
     for month in range(relative_month):
         start_date = datetime.now() - relativedelta(months=month)
-        data.append([start_date.strftime("%Y-%m")] + [get_queryset(user, app, start_date).count() for app in settings.SUPERVISED_APPS])
+        string_date = start_date.strftime("%Y-%m")
+        qss = [get_queryset(user, app, start_date) for app in settings.SUPERVISED_APPS]
+        data.append([string_date] + [qs.count() for qs in qss])
+        print(list(qss))
+        unique_patients.append([string_date] + [qs.values('patient').distinct().count() for qs in qss])
 
     return {'user_id': user.id,
-            'data': data}
+            'data': data,
+            'unique': unique_patients,
+            }
 
 
 def check_superuser(user):

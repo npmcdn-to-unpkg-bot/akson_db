@@ -11,16 +11,17 @@
         function drawDashboard() {
             var users_data = {{users_data|safe}};
             data_tables = {}
+            data_tables_unique = {}
             users_data.forEach(function(user_data) {
                 data_tables[user_data.user_id] = google.visualization.arrayToDataTable(user_data.data);
+                data_tables_unique[user_data.user_id] = google.visualization.arrayToDataTable(user_data.unique);
             });
 
-            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            var table = new google.visualization.Table(document.getElementById('table_div'));
-            function drawCharts() {
+            function drawCharts(data_tables, chart, table, title_prefix = "") {
                 var options = {
-                    title: user_select.options[user_select.selectedIndex].text,
+                    title: title_prefix + user_select.options[user_select.selectedIndex].text,
                     chartArea: {width: '70%', height: '80%'},
+                    bar: {groupWidth: '100%'},
                     legend: {position: 'right'},
                     height: 400,
                     animation:{
@@ -35,11 +36,21 @@
                 table.draw(actual_data, {});
             }
 
+            function drawAllCharts() {
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                var table = new google.visualization.Table(document.getElementById('table_div'));
+                drawCharts(data_tables, chart, table, "Liczba wykonanych ćwiczeń dla osoby: ");
+
+                var chart_unique = new google.visualization.ColumnChart(document.getElementById('chart_unique_div'));
+                var table_unique = new google.visualization.Table(document.getElementById('table_unique_div'));
+                drawCharts(data_tables_unique, chart_unique, table_unique, "Liczba pacjentów dla osoby: ");
+            }
+
             var user_select = document.getElementById('user_select');
-            user_select.onkeyup = user_select.onchange = drawCharts;
+            user_select.onkeyup = user_select.onchange = drawAllCharts;
             user_select.focus();
 
-            drawCharts();
+            drawAllCharts();
         }
     </script>
 </head>
@@ -51,5 +62,7 @@
     </select>
     <div id="chart_div"></div>
     <div id="table_div"></div>
+    <div id="chart_unique_div"></div>
+    <div id="table_unique_div"></div>
 </body>
 </html>
