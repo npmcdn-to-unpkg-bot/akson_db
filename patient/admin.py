@@ -235,8 +235,6 @@ class PatientCardAdmin(AksonBaseAdmin):
     def change_view(self, request, object_id, form_url='', extra_context=None):
         extra_context = extra_context or {}
         extra_context['therapy_program_inlines'] = dict([(inline.model._meta.verbose_name, inline) for inline in self.therapy_program_inlines])
-        print(dir(extra_context['therapy_program_inlines']))
-        print(extra_context['therapy_program_inlines'])
 
         return super(PatientCardAdmin, self).change_view(request, object_id=object_id, form_url=form_url,
                                                          extra_context=extra_context)
