@@ -36,19 +36,31 @@
                 table.draw(actual_data, {});
             }
 
-            function drawAllCharts() {
-                var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-                var table = new google.visualization.Table(document.getElementById('table_div'));
-                drawCharts(data_tables, chart, table, "Liczba wykonanych ćwiczeń dla osoby: ");
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            var save_chart = document.getElementById('save_chart');
+            var table = new google.visualization.Table(document.getElementById('table_div'));
 
-                var chart_unique = new google.visualization.ColumnChart(document.getElementById('chart_unique_div'));
-                var table_unique = new google.visualization.Table(document.getElementById('table_unique_div'));
+            var chart_unique = new google.visualization.ColumnChart(document.getElementById('chart_unique_div'));
+            var save_unique_chart = document.getElementById('save_unique_chart');
+            var table_unique = new google.visualization.Table(document.getElementById('table_unique_div'));
+
+            function drawAllCharts() {
+                drawCharts(data_tables, chart, table, "Liczba wykonanych ćwiczeń dla osoby: ");
                 drawCharts(data_tables_unique, chart_unique, table_unique, "Liczba pacjentów dla osoby: ");
             }
 
             var user_select = document.getElementById('user_select');
             user_select.onkeyup = user_select.onchange = drawAllCharts;
             user_select.focus();
+
+            google.visualization.events.addListener(chart, 'ready', function () {
+                save_chart.href = chart.getImageURI();
+                save_chart.download = user_select.options[user_select.selectedIndex].text + ".png";
+            });
+            google.visualization.events.addListener(chart_unique, 'ready', function () {
+                save_unique_chart.href = chart_unique.getImageURI();
+                save_unique_chart.download = user_select.options[user_select.selectedIndex].text + ".png";
+            });
 
             drawAllCharts();
         }
@@ -61,8 +73,10 @@
         {% endfor %}
     </select>
     <div id="chart_div"></div>
+    <a href="" id="save_chart">Zapisz wykres do pliku</a>
     <div id="table_div"></div>
     <div id="chart_unique_div"></div>
+    <a href="" id="save_unique_chart">Zapisz wykres do pliku</a>
     <div id="table_unique_div"></div>
 </body>
 </html>
