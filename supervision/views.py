@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.http import JsonResponse
 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -10,7 +11,6 @@ from dateutil.relativedelta import relativedelta
 
 def get_users():
     raw_users = list(User.objects.values_list('id', 'first_name', 'last_name'))
-    print(raw_users)
     users = [{'id': raw_user[0], 'full_name': "{0} {1}".format(*raw_user[1:])} for raw_user in raw_users]
     return {'users': sorted(list(users), key=lambda user: user['full_name'])}
 
@@ -47,7 +47,13 @@ def check_superuser(user):
 @login_required(login_url='/login/')
 @user_passes_test(check_superuser)
 def index(request):
-    users = get_users()
-    context = {'users_data': [get_summary_data(user['id']) for user in users['users']]}
-    context.update(users)
+    context = get_users()
+    #context = {'users_data': [get_summary_data(user['id']) for user in users['users']]}
+    #context.update(users)
     return render(request, 'supervision/index.html', context)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_superuser)
+def user_data(request, user_id):
+    return JsonResponse(get_summary_data(user_id))
