@@ -3,3 +3,7 @@ django_debug_toolbar
 django_easy_select2
 mysqlclient
 python-dateutil
+
+djangorestframework
+markdown       # Markdown support for the browsable API.
+django-filter  # Filtering support

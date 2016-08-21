@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.http import JsonResponse
+from rest_framework import serializers, viewsets
 
 from patient.models import Patient
 from neurorehabilitation_card.models import ExcerciseSignature
@@ -16,14 +16,21 @@ def index(request):
     return render(request, 'analyzer/index.html')
 
 
-@login_required(login_url='/login/')
-@user_passes_test(check_superuser)
-def get_patients(request):
-    return JsonResponse({'patients': list(Patient.objects.values_list('id', 'first_name', 'last_name'))})
+class PatientSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Patient
 
 
-@login_required(login_url='/login/')
-@user_passes_test(check_superuser)
-def get_signatures(request):
-    return JsonResponse({'signatures': list(ExcerciseSignature.objects.values_list('id', 'name', 'description'))})
+class PatientViewSet(viewsets.ModelViewSet):
+    queryset = Patient.objects.all()
+    serializer_class = PatientSerializer
 
+
+class SignatureSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ExcerciseSignature
+
+
+class SignatureViewSet(viewsets.ModelViewSet):
+    queryset = ExcerciseSignature.objects.all()
+    serializer_class = SignatureSerializer

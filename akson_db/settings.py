@@ -101,6 +101,8 @@ INSTALLED_APPS = [
     'therapy_program',
     'supervision',
     'analyzer',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -164,6 +166,13 @@ if 'RDS_HOSTNAME' in os.environ: # AWS environment
 #    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 #    SESSION_COOKIE_SECURE = True
 #    CSRF_COOKIE_SECURE = True
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissions'
+    ]
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

@@ -1,10 +1,15 @@
-from django.conf.urls import url
-
 from . import views
+from django.conf.urls import url, include
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register(r'patient', views.PatientViewSet)
+router.register(r'signature', views.SignatureViewSet)
 
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^patients/$', views.get_patients, name='get_patients'),
-    url(r'^signatures/$', views.get_signatures, name='get_signatures'),
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
