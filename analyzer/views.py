@@ -4,6 +4,7 @@ from rest_framework import serializers, viewsets
 
 from patient.models import Patient
 from neurorehabilitation_card.models import ExcerciseSignature
+from .models import NeurorehabilitationChart
 
 
 def check_superuser(user):
@@ -25,6 +26,16 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
 class PatientViewSet(viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+
+
+class NeurorehabilitationChartSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = NeurorehabilitationChart
+
+
+class NeurorehabilitationChartViewSet(viewsets.ModelViewSet):
+    queryset = NeurorehabilitationChart.objects.all()
+    serializer_class = NeurorehabilitationChartSerializer
 
 
 class SignatureSerializer(serializers.HyperlinkedModelSerializer):
