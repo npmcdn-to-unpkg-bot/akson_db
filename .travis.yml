@@ -15,11 +15,8 @@ env:
 # command to install dependencies
 install:
   - cd analyzer
-  - npm install typescript typings webpack
-  - npm install
-  - npm link typescript
-  - typings install --global --save dt~react
-  - typings install --global --save dt~react-dom
+  - ./initialize
+  - webpack
   - cd ..
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt

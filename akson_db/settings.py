@@ -100,6 +100,7 @@ INSTALLED_APPS = [
     'dynamometry_card',
     'therapy_program',
     'supervision',
+    'analyzer',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -182,7 +183,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-U_LOGFILE_NAME = '/var/log/akson_db.log'
+if 'RDS_HOSTNAME' in os.environ: # AWS environment
+    U_LOGFILE_NAME = '/var/log/akson_db.log'
+else:
+    U_LOGFILE_NAME = 'akson_db.log'
 U_LOGFILE_SIZE = 10 * 1024 * 1024
 U_LOGFILE_COUNT = 10
 LOGGING = {
