@@ -143,7 +143,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME') or 'akson_prod',  # Or path to database file if using sqlite3.
         'USER': os.getenv('DB_USER'),  # Not used with sqlite3.
         'PASSWORD': os.getenv('DB_PASS'),  # Not used with sqlite3.
-        'HOST': '192.168.1.5',  # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',  # Set to empty string for default. Not used with sqlite3.
     }
 }
