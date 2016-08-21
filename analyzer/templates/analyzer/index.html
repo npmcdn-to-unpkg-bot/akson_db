@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,6 @@
         <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
 
         <!-- Main -->
-        <script src="./analyzer.js"></script>
+        <script src="{% static 'analyzer/analyzer.js' %}"></script>
     </body>
 </html>
