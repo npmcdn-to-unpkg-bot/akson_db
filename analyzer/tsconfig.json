@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./static/analyzer/dist/",
+    "outDir": "./static/analyzer/",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",

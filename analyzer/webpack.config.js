@@ -1,7 +1,7 @@
 module.exports = {
     entry: "./src/index.tsx",
     output: {
-        filename: "./static/analyzer/dist/bundle.js",
+        filename: "./static/analyzer/analyzer.js",
     },
 
     // Enable sourcemaps for debugging webpack's output.
