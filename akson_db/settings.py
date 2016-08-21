@@ -160,9 +160,9 @@ if 'RDS_HOSTNAME' in os.environ: # AWS environment
         }
     }
 
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+#    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#    SESSION_COOKIE_SECURE = True
+#    CSRF_COOKIE_SECURE = True
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
