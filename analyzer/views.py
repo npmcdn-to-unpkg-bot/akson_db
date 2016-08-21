@@ -19,6 +19,7 @@ def index(request):
 class PatientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Patient
+        fields = ('id', 'first_name', 'last_name')
 
 
 class PatientViewSet(viewsets.ModelViewSet):
