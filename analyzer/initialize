@@ -4,3 +4,6 @@ npm link typescript
 typings install --global --save dt~react
 typings install --global --save dt~react-dom
 typings install dt~jquery --global --save
+typings install --global google-apps-script/google-apps-script.charts --s
+typings install dt~react-bootstrap --global --save
+
