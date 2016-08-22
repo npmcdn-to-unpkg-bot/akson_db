@@ -6,7 +6,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'patient', views.PatientViewSet)
 router.register(r'signature', views.SignatureViewSet)
-router.register(r'neurorehabilitation_chart', views.NeurorehabilitationChartViewSet)
+router.register(r'neurorehabilitation_chart', views.NeurorehabilitationCardsViewSet)
 
 
 urlpatterns = [

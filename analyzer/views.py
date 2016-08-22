@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
 from rest_framework import serializers, viewsets
@@ -5,6 +6,7 @@ from rest_framework import serializers, viewsets
 from patient.models import Patient
 from neurorehabilitation_card.models import ExcerciseSignature
 from .models import NeurorehabilitationChart
+from neurorehabilitation_card.models import NeurorehabilitationCard
 
 
 def check_superuser(user):
@@ -36,6 +38,17 @@ class NeurorehabilitationChartSerializer(serializers.HyperlinkedModelSerializer)
 class NeurorehabilitationChartViewSet(viewsets.ModelViewSet):
     queryset = NeurorehabilitationChart.objects.all()
     serializer_class = NeurorehabilitationChartSerializer
+
+
+class NeurorehabilitationCardsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = NeurorehabilitationCard
+        fields = ('id', 'date', 'load')
+
+
+class NeurorehabilitationCardsViewSet(viewsets.ModelViewSet):
+    queryset = NeurorehabilitationCard.objects.filter(patient__id=61)
+    serializer_class = NeurorehabilitationCardsSerializer
 
 
 class SignatureSerializer(serializers.HyperlinkedModelSerializer):
