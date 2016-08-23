@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./components/Hello";
+import { Analyzer } from "./components/Analyzer";
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Analyzer/>,
     document.getElementById("example")
 );
 
