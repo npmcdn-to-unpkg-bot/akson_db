@@ -1,7 +1,7 @@
 import * as React from "react";
 // import from "jquery";
 import * as $ from "jquery";
-import * as bs from "bootstrap-datepicker";
+
 
 export interface INeurorehabilitationProperties {
   updateCharts: any;

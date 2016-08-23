@@ -9,7 +9,6 @@ export interface AnalyzerState {
   currentPatientId?: number;
 }
 
-
 export class Analyzer extends React.Component<any, AnalyzerState> {
 
   private newChart = (patientId: number) => {
