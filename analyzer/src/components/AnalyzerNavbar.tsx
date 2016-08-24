@@ -19,7 +19,6 @@ export default class AnalyzerNavbar extends React.Component<AnalyzerNavbarProps,
 
   componentWillMount = () => {
     $.get("./api/patient", (result) => {
-
       this.setState({
         id: null,
         patients: result

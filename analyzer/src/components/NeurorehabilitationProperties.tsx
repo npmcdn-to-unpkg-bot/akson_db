@@ -1,5 +1,4 @@
 import * as React from "react";
-// import from "jquery";
 import * as $ from "jquery";
 
 
@@ -10,14 +9,20 @@ export interface INeurorehabilitationProperties {
 }
 
 export interface NeurorehabilitationPropertiesState {
-
+  signatures: any;
 }
 
 export default class NeurorehabilitationProperties extends React.Component<INeurorehabilitationProperties, NeurorehabilitationPropertiesState> {
+  public state = {
+    signatures: [{}]
+  };
+
   componentWillMount = () => {
-    // $.get("./api/neurorehabilitation_data", {id: this.props.id}, (result) => {
-    //   this.props.updateData(result);
-    // });
+    $.get("./api/signature", {}, (result) => {
+      this.setState({
+        signatures: result
+      })
+    });
   };
 
   private exerciseSignatures: Array<any> = [];
@@ -25,21 +30,26 @@ export default class NeurorehabilitationProperties extends React.Component<INeur
   private endDate: any;
 
   componentDidMount() {
-    console.log($("#start-date"));
     $("#start-date").datepicker();
-    console.log($("#start-date"), "end");
-
-  }
-
-  private createDatePicker = () => {
+    $(".akson-date").each(function(index, elem) {
+      $(elem).datepicker();
+    });
   }
 
   render() {
-    console.log($("#start-date"), "render");
     return (
       <div>
-        <p>data poczatkowa<input type="text" id="start-date"/></p>
-        {this.createDatePicker()}
+        <p>data poczatkowa<input type="text" className="akson-date"/></p>
+        <p>data koncowa<input type="text" id="start-date" className="akson-date"/></p>
+        <p>sygnatury
+          <select multiple>
+            {this.state.signatures.map((signature: any) => {
+              return (
+                <option value={signature.name}>{signature.name}</option>
+              );
+            })}
+          </select>
+        </p>
       </div>
     );
   }
