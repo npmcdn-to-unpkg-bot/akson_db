@@ -42,7 +42,7 @@ export default class AnalyzerCharts extends React.Component<DataViewerProps, Dat
 
   render() {
     return (
-      <div>
+      <div id="viewer">
         {this.renderProperties()}
         {this.renderCharts()}
       </div>

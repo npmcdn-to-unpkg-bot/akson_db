@@ -32,7 +32,7 @@ export default class AnalyzerNavbar extends React.Component<AnalyzerNavbarProps,
 
   renderPatients = () => {
     return (
-      <div>
+      <div id="navbar">
         {this.state.patients.map((patient: any) => {
           return (
             <div>

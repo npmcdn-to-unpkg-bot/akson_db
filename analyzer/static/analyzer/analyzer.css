@@ -1,0 +1,12 @@
+#navbar{
+    width: 20%;
+    float: left;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+#viewer {
+    width: 80%;
+    float: right;
+}
