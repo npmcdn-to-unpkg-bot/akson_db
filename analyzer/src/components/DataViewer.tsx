@@ -13,7 +13,6 @@ export interface DataViewerState {
   chartsData: any;
 }
 
-
 export default class AnalyzerCharts extends React.Component<DataViewerProps, DataViewerState> {
 
   private updateCharts = (data: any[]) => {
@@ -36,7 +35,9 @@ export default class AnalyzerCharts extends React.Component<DataViewerProps, Dat
   }
 
   private renderCharts = (): any => {
-
+    if (this.state) {
+        console.log(this.state.chartsData);
+    }
     return null;
   }
 
